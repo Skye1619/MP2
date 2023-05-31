@@ -22,22 +22,25 @@ const drawerWidth = 240;
 const navItems = ['Home', 'Movies', 'Categories'];
 
 const Search = styled('div')(({ theme }) => ({
+  padding: theme.spacing(1, 0),
   position: 'relative',
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: '20px',
+  display: 'flex',
+  alignItems: 'center',
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: 0,
+  marginLeft: theme.spacing(2),
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(2),
     width: 'auto',
   },
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0, 1),
   height: '100%',
   position: 'absolute',
   pointerEvents: 'none',
@@ -75,13 +78,13 @@ function DrawerAppBar(props) {
   
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <img src={logo} alt='Logo' />
-      <Divider />
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <img src={logo} alt='Logo' width={'80%'}/>
+      <Divider sx={{background: '#fff', width: '80%', alignSelf: 'center'}} />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton sx={{ textAlign: 'center', border: '1px solid #E2C044' }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -137,16 +140,13 @@ function DrawerAppBar(props) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: '#000', color: '#fff' },
           }}
         >
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-        
-      </Box>
     </Box>
   );
 }

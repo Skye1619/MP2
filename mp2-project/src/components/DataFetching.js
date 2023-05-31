@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const API_URL = "https://api.themoviedb.org/3";
 const myKey = "850c76a64839953d0d1631f4e46d66b8";
-
+const imgBaseUrl = "https://image.tmdb.org/t/p"
 
 /* FUNCTION TO FETCH TRENDING MOVIES */
 function FetchTrending() {
@@ -26,7 +26,16 @@ function FetchTrending() {
 
   const renderMovies = () => {
     return movies.map(movie => {
-      return <div key={movie.id}>{movie.title}</div>
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+      console.log(movies)
+      
+      
+      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
     })
   }
 
@@ -55,7 +64,15 @@ export function FetchPopular() {
 
   const renderMovies = () => {
     return movies.map(movie => {
-      return <div key={movie.id}>{movie.title}</div>
+      
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+      
+      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
     })
   }
 
@@ -82,7 +99,15 @@ export function FetchUpcoming() {
 
   const renderMovies = () => {
     return movies.map(movie => {
-      return <div key={movie.id}>{movie.title}</div>
+      
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+      
+      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
     })
   }
 
@@ -108,7 +133,15 @@ export function FetchTopRated() {
 
   const renderMovies = () => {
     return movies.map(movie => {
-      return <div key={movie.id}>{movie.title}</div>
+      
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+      
+      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
     })
   }
 
