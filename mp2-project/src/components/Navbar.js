@@ -1,3 +1,4 @@
+import './Navbar.css';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -22,27 +23,26 @@ const drawerWidth = 240;
 const navItems = ['Home', 'Movies', 'Categories'];
 
 const Search = styled('div')(({ theme }) => ({
-  padding: theme.spacing(1, 0),
+  padding: theme.spacing(1, 1),
   position: 'relative',
   borderRadius: '20px',
   display: 'flex',
   alignItems: 'center',
+  overflow: 'hidden',
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: theme.spacing(2),
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(2),
-    width: 'auto',
-  },
+  width: 'fit-content',
+  [theme.breakpoints.down('sm')]: {
+
+  }
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 1),
   height: '100%',
   position: 'absolute',
+  left: '5px',
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
@@ -54,15 +54,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    paddingLeft: theme.spacing(3),
     transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
+    width: '150px',
+    '&:focus': {
+      [theme.breakpoints.up('md')]: {
+        width: '250px'
       },
-    },
+        width: '150px'
+      },
   },
 }));
 
@@ -84,7 +84,7 @@ function DrawerAppBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center', border: '1px solid #E2C044' }}>
+            <ListItemButton sx={{ textAlign: 'center', border: '1px solid #E2C044', borderRadius: '7px', marginBottom: '10px', color: '#e0fbfc' }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -110,23 +110,25 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <img src={logo} alt='Logo' height={'80px'} />
-          <Box sx={{ display: { xs: 'none', sm: 'block', position: 'right' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%', justifyContent: 'center' }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: '#fff' }}>
                 {item}
               </Button>
             ))}
           </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon 
-                sx={{color: '#E2C044'}}/>
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+          <Box sx={{width: '500px', '@media (max-width: 600px)': {display:'flex', flexWrap: 'wrap', justifyContent: 'end'}}}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon 
+                  sx={{color: '#E2C044'}}/>
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -140,7 +142,7 @@ function DrawerAppBar(props) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: '#000', color: '#fff' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: 'linear-gradient(#000 10%, #000c 20%)', color: '#e0fbfc' },
           }}
         >
           {drawer}
