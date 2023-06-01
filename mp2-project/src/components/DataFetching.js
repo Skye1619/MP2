@@ -24,22 +24,23 @@ function FetchTrending() {
     fetchMovie();
   }, []);
 
-  const renderMovies = () => {
-    return movies.map(movie => {
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
       const releaseDate = movie.release_date;
-      console.log(movies)
-      
-      
-      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
-    })
-  }
+  
+      return {movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}
+    });
+  };
 
-  return <div>{renderMovies()}</div>;
+  return passMovieData();
+
 }
 
 export default FetchTrending;
@@ -62,21 +63,22 @@ export function FetchPopular() {
     fetchMovie()
   }, [])
 
-  const renderMovies = () => {
-    return movies.map(movie => {
-      
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
       const releaseDate = movie.release_date;
-      
-      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
-    })
-  }
+  
+      return {movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}
+    });
+  };
 
-  return <div>{renderMovies()}</div>
+  return passMovieData();
 }
 
 
@@ -97,21 +99,22 @@ export function FetchUpcoming() {
     fetchMovie()
   }, [])
 
-  const renderMovies = () => {
-    return movies.map(movie => {
-      
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
       const releaseDate = movie.release_date;
-      
-      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
-    })
-  }
+  
+      return {movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}
+    });
+  };
 
-  return <div>{renderMovies()}</div>
+  return passMovieData();
 }
 
 /* FUNCTION TO FETCH TOP RATED MOVIES */
@@ -131,20 +134,21 @@ export function FetchTopRated() {
     fetchMovie()
   }, [])
 
-  const renderMovies = () => {
-    return movies.map(movie => {
-      
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
       const releaseDate = movie.release_date;
-      
-      return <div>{releaseDate}<img src={posterImg} alt={movieTitle} />{movieOverview}</div>
-    })
-  }
+  
+      return {movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}
+    });
+  };
 
-  return <div>{renderMovies()}</div>
+  return passMovieData();
 }
 

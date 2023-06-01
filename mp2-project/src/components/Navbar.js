@@ -18,9 +18,10 @@ import logo from '../assets/logo.png';
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Movies', 'Categories'];
+const navItems = ['Home', 'Movies', 'Category'];
 
 const Search = styled('div')(({ theme }) => ({
   padding: theme.spacing(1, 1),
@@ -79,14 +80,18 @@ function DrawerAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-      <img src={logo} alt='Logo' width={'80%'}/>
+      <Link to='/'>
+        <img src={logo} alt='Logo' width={'80%'}/>
+      </Link>
       <Divider sx={{background: '#fff', width: '80%', alignSelf: 'center'}} />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center', border: '1px solid #E2C044', borderRadius: '7px', marginBottom: '10px', color: '#e0fbfc' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+            <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} style={{textDecoration: 'none'}}>
+              <ListItemButton sx={{ textAlign: 'center', border: '1px solid #E2C044', borderRadius: '7px', marginBottom: '10px', color: '#e0fbfc' }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -109,12 +114,17 @@ function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <img src={logo} alt='Logo' height={'80px'} />
+          <Link to='/'>
+            <img src={logo} alt='Logo' height={'80px'} />
+          </Link>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%', justifyContent: 'center' }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
+
+              <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}>
+                <Button key={item} sx={{ color: '#fff' }}>
+                  {item}
+                </Button>
+              </Link>
             ))}
           </Box>
           <Box sx={{width: '500px', '@media (max-width: 600px)': {display:'flex', flexWrap: 'wrap', justifyContent: 'end'}}}>
