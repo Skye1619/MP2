@@ -1,7 +1,12 @@
 import './App.css';
 import { Container } from '@mui/material'
-import FetchTrending, {FetchPopular, FetchTopRated, FetchUpcoming} from './components/DataFetching';
 import DrawerAppBar from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Movies from './components/Movies';
+import Category from './components/Category';
+
+
 
 function App() {
 
@@ -11,10 +16,13 @@ function App() {
     <>
       <Container maxWidth='false' className='main-container'>
         <DrawerAppBar />
-        <FetchTrending />
-        <FetchPopular />
-        <FetchUpcoming />
-        <FetchTopRated />
+        <div>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/movies' element={<Movies />} />
+            <Route path='/category' element={<Category />} />
+          </Routes>
+        </div>
       </Container>
     </>
   );
