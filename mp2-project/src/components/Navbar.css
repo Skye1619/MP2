@@ -3,9 +3,14 @@ img[alt='Logo']:hover {
     cursor: pointer;
 }
 
+.topActive {
+  border-bottom: 2px solid #e2c044 !important;
+  border-radius: 0 !important;
+}
 
-
-
+.drawerActive {
+  background: #e2c044 !important;
+}
 
 
 

@@ -152,3 +152,26 @@ export function FetchTopRated() {
   return passMovieData();
 }
 
+export function SearchMovies({searchText}) {
+  const [movies, setMovies] = useState([]);
+  console.log(searchText)
+  const fetchMovie = async () => {
+    const {data: {results}} = await axios.get(`${API_URL}/discover/movie`, {
+      params: {
+        api_key: myKey,
+        language: 'en-US',
+        page: 1,
+        query: searchText
+      }
+    })
+    console.log(results)
+    setMovies(results)
+  }
+
+  useEffect(() => {
+    fetchMovie()
+  }, [searchText])
+  
+  return searchText
+  
+}

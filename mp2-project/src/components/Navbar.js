@@ -18,10 +18,13 @@ import logo from '../assets/logo.png';
 import { styled, alpha } from '@mui/material/styles';
 import { InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { Link } from 'react-router-dom';
+import { Link, useMatch, useLocation } from 'react-router-dom';
+import {useState} from 'react'
+import {SearchMovies} from './DataFetching'
 
 const drawerWidth = 240;
 const navItems = ['Home', 'Movies', 'Category'];
+export const logoHeight = '80px';
 
 const Search = styled('div')(({ theme }) => ({
   padding: theme.spacing(1, 1),
@@ -75,7 +78,8 @@ function DrawerAppBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
+  const location = useLocation();
+  const [searchValue, setSearchValue] = useState('');
   
 
   const drawer = (
@@ -85,18 +89,36 @@ function DrawerAppBar(props) {
       </Link>
       <Divider sx={{background: '#fff', width: '80%', alignSelf: 'center'}} />
       <List>
-        {navItems.map((item) => (
+        {navItems.map((item) => {
+        
+        const resolvePath = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
+        const isActive = location.pathname === resolvePath;
+        
+        return (
           <ListItem key={item} disablePadding>
-            <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} style={{textDecoration: 'none'}}>
-              <ListItemButton sx={{ textAlign: 'center', border: '1px solid #E2C044', borderRadius: '7px', marginBottom: '10px', color: '#e0fbfc' }}>
+            <Link to={resolvePath} style={{textDecoration: 'none'}}>
+              <ListItemButton className={isActive ? 'drawerActive' : '' } sx={{ textAlign: 'center', border: '1px solid #E2C044', borderRadius: '7px', marginBottom: '10px', color: '#e0fbfc', width: '100px' }}>
                 <ListItemText primary={item} />
               </ListItemButton>
             </Link>
           </ListItem>
-        ))}
+          )
+        })}
       </List>
     </Box>
   );
+  
+  
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+  const handleSearchSubmit = () => {
+    // Handle search submission
+     console.log('Search value:', searchValue);
+    
+  };
+  
+  
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -104,7 +126,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav">
-        <Toolbar sx={{background: '#000', width: '100%'}}>
+        <Toolbar sx={{background: '#000', width: '100%', borderBottom: '1px solid #e2c044' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -115,18 +137,24 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Link to='/'>
-            <img src={logo} alt='Logo' height={'80px'} />
+            <img src={logo} alt='Logo' height={logoHeight} />
           </Link>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, width: '100%', justifyContent: 'center' }}>
-            {navItems.map((item) => (
-
-              <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}>
-                <Button key={item} sx={{ color: '#fff' }}>
-                  {item}
-                </Button>
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const resolvePath = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
+              const isActive = location.pathname === resolvePath;
+          
+              return (
+                <Link key={item} to={resolvePath}>
+                  <Button sx={{ color: '#fff' }} className={isActive ? 'topActive' : ''}>
+                    {item}
+                  </Button>
+                </Link>
+              );
+            })}
           </Box>
+
+          
           <Box sx={{width: '500px', '@media (max-width: 600px)': {display:'flex', flexWrap: 'wrap', justifyContent: 'end'}}}>
             <Search>
               <SearchIconWrapper>
@@ -135,7 +163,10 @@ function DrawerAppBar(props) {
               </SearchIconWrapper>
               <StyledInputBase
                 placeholder="Search…"
+                value={searchValue}
+                onChange={handleSearchChange}
                 inputProps={{ 'aria-label': 'search' }}
+                onKeyDown={(event) => {if (event.key === 'Enter') { handleSearchSubmit() } }}
               />
             </Search>
           </Box>
