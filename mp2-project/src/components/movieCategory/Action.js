@@ -17,13 +17,14 @@ function Action() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
       return (
         <>
+            
             <div>{movieTitle}</div>
         </>
       )
     });
   };
 
-  return <div style={{ marginTop: "50px" }}>{readActionMovie()}</div>
+  return <div style={{ marginTop: "50px" }}><h1>Action</h1>{readActionMovie()}</div>
 }
 
 export default Action;
