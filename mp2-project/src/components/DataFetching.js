@@ -90,7 +90,7 @@ export function FetchAction() {
   const fetchMovie = async () => {
     const {
       data: { results },
-    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${encodeURI('comedy')}`, {
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Action' ? genre.id : ""})}`, {
       params: {
         api_key: myKey,
         query: 'comedy'
@@ -132,7 +132,212 @@ export function FetchAdventure() {
   const fetchMovie = async () => {
     const {
       data: { results },
-    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=adventure`, {
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Adventure' ? genre.id : ""})}`, {
+      params: {
+        api_key: myKey,
+      },
+    });
+    setMovies(results);
+  };
+
+  useEffect(() => {
+    fetchMovie();
+  }, []);
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+
+  return passMovieData();
+}
+
+export function FetchComedy() {
+  /* FETCH ACTION MOVIES */
+  const [movies, setMovies] = useState([]);
+  const fetchMovie = async () => {
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Comedy' ? genre.id : ""})}`, {
+      params: {
+        api_key: myKey,
+      },
+    });
+    setMovies(results);
+  };
+
+  useEffect(() => {
+    fetchMovie();
+  }, []);
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+
+  return passMovieData();
+}
+
+export function FetchHorror() {
+  /* FETCH ACTION MOVIES */
+  const [movies, setMovies] = useState([]);
+  const fetchMovie = async () => {
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Horror' ? genre.id : ""})}`, {
+      params: {
+        api_key: myKey,
+      },
+    });
+    setMovies(results);
+  };
+
+  useEffect(() => {
+    fetchMovie();
+  }, []);
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+
+  return passMovieData();
+}
+
+export function FetchRomance() {
+  /* FETCH ACTION MOVIES */
+  const [movies, setMovies] = useState([]);
+  const fetchMovie = async () => {
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Romance' ? genre.id : ""})}`, {
+      params: {
+        api_key: myKey,
+      },
+    });
+    setMovies(results);
+  };
+
+  useEffect(() => {
+    fetchMovie();
+  }, []);
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+
+  return passMovieData();
+}
+
+export function FetchSciFi() {
+  /* FETCH ACTION MOVIES */
+  const [movies, setMovies] = useState([]);
+  const fetchMovie = async () => {
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Science Fiction' ? genre.id : ""})}`, {
+      params: {
+        api_key: myKey,
+      },
+    });
+    setMovies(results);
+  };
+
+  useEffect(() => {
+    fetchMovie();
+  }, []);
+
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+
+  return passMovieData();
+}
+
+export function FetchThriller() {
+  /* FETCH ACTION MOVIES */
+  const [movies, setMovies] = useState([]);
+  const fetchMovie = async () => {
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/discover/movie?&sort_by=popularity.desc&with_genres=${genres.map((genre) => {return genre.name === 'Thriller' ? genre.id : ""})}`, {
       params: {
         api_key: myKey,
       },

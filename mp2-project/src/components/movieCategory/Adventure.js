@@ -16,13 +16,14 @@ function Adventure() {
              SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
       return (
         <>
+            
           <div>{movieTitle}</div>
         </>
       );
     });
   };
 
-  return <div style={{ marginTop: "50px" }}>{readAdventureMovie()}</div>;
+  return <div style={{ marginTop: "50px" }}><h1>Adventure</h1>{readAdventureMovie()}</div>;
 }
 
 export default Adventure;
