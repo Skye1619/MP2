@@ -1,6 +1,5 @@
-
-img[alt='Logo']:hover {
-    cursor: pointer;
+img[alt="Logo"]:hover {
+  cursor: pointer;
 }
 
 .topActive {
@@ -12,9 +11,20 @@ img[alt='Logo']:hover {
   background: #e2c044 !important;
 }
 
-
-
-
-
-
-
+.dropdownMenu {
+  color: #e2c044 !important;
+  background: #333 !important;
+  padding: 10px 30px !important;
+}
+.MuiMenu-paper{
+  border-radius: 0 10px 10px 10px !important;
+  border: none !important;
+  background: transparent !important;
+}
+.MuiMenu-list {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: fit-content !important;
+  overflow: hidden !important;
+}
