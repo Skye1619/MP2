@@ -16,12 +16,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import logo from "../assets/logo.png";
 import { styled, alpha } from "@mui/material/styles";
-import { InputBase, Menu, MenuItem } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputBase, Menu, MenuItem, useMediaQuery } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useMatch, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { SearchMovies } from "./DataFetching";
 import SearchMovie from "./Search";
+import { useTheme } from "@mui/material/styles";
 
 const drawerWidth = 240;
 const navItems = ["Home", "Movies", "Category"];
@@ -80,48 +81,18 @@ function DrawerAppBar(props) {
   const location = useLocation();
   const [searchValue, setSearchValue] = useState("");
 
-  const drawer = (
-    <Box
-      onClick={handleDrawerToggle}
-      sx={{
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <Link to="/">
-        <img src={logo} alt="Logo" width={"80%"} />
-      </Link>
-      <Divider sx={{ background: "#fff", width: "80%", alignSelf: "center" }} />
-      <List>
-        {navItems.map((item) => {
-          const resolvePath = item === "Home" ? "/" : `/${item.toLowerCase()}`;
-          const isActive = location.pathname === resolvePath;
 
-          return (
-            <ListItem key={item} disablePadding>
-              <Link to={resolvePath} style={{ textDecoration: "none" }}>
-                <ListItemButton
-                  className={isActive ? "drawerActive" : ""}
-                  sx={{
-                    textAlign: "center",
-                    border: "1px solid #E2C044",
-                    borderRadius: "7px",
-                    marginBottom: "10px",
-                    color: "#e0fbfc",
-                    width: "100px",
-                  }}
-                >
-                  <ListItemText primary={item} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          );
-        })}
-      </List>
-    </Box>
-  );
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setMobileOpen(false)
+  };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -131,6 +102,7 @@ function DrawerAppBar(props) {
 
   const handleMenuClose = (buttonValue) => {
     setAnchorEl(null);
+    handleClose()
     switch (buttonValue) {
       case "Action":
         console.log("1");
@@ -166,13 +138,73 @@ function DrawerAppBar(props) {
   };
 
   const isMenuOpen = Boolean(anchorEl);
+  
+  const drawer = (
+    <><Box
+    onClick={handleDrawerToggle}
+    sx={{
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Link to="/">
+        <img src={logo} alt="Logo" width={"80%"} />
+      </Link>
+      <Divider sx={{ background: "#fff", width: "80%", alignSelf: "center" }} />
+      <List>
+        {navItems.map((item) => {
+          const resolvePath = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+          const isActive = location.pathname === resolvePath;
+
+          return (
+            <ListItem key={item} disablePadding>
+              <Link to={item === 'Category' ? location.pathname : resolvePath} style={{ textDecoration: "none" }}>
+                <ListItemButton
+                  className={isActive ? "drawerActive" : ""}
+                  sx={{
+                    textAlign: "center",
+                    border: "1px solid #E2C044",
+                    borderRadius: "7px",
+                    marginBottom: "10px",
+                    color: "#e0fbfc",
+                    width: "100px",
+                  }}
+                  onClick={item === 'Category' ? handleClickOpen : null}
+                >
+                  <ListItemText primary={item} />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+          );
+        })}
+      </List>
+    </Box>
+      <Dialog onClose={handleClose} open={open}>
+        <DialogTitle>Categories</DialogTitle>
+        <Divider style={{background: '#e2c044', height: '2px'}} />
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Action')}>Action</Button>
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Adventure')}>Adventure</Button>
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Comedy')}>Comedy</Button>
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Horror')}>Horror</Button>
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Romance')}>Romance</Button>
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Sci-Fi')}>Sci-Fi</Button>
+        <Button className="mobileCategoryButton" onClick={() => handleMenuClose('Thriller')}>Thriller</Button>
+      </Dialog>
+      </>
+  );
+
+  
+
+  
 
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
+        vertical: "center",
+        horizontal: "right",
       }}
       id="categories-menu"
       keepMounted
@@ -280,7 +312,7 @@ function DrawerAppBar(props) {
               return (
                 <Link
                   key={item}
-                  to={resolvePath === movieCategory ? "#" : resolvePath}
+                  to={resolvePath === movieCategory ? location.pathname : resolvePath}
                 >
                   <Button
                     sx={{ color: "#fff" }}

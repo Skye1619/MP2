@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box !important;
+}
+
 img[alt="Logo"]:hover {
   cursor: pointer;
 }
@@ -27,4 +31,21 @@ img[alt="Logo"]:hover {
   margin: 0 !important;
   height: fit-content !important;
   overflow: hidden !important;
+}
+
+.mobileCategoryButton {
+  background: #333 !important;
+  color: #e2c044 !important;
+  border-radius: 0 !important;
+}
+
+
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  background: transparent !important;
+}
+
+.MuiDialogTitle-root {
+  color: #e2c044 !important;
+  background: #333 !important;
 }
