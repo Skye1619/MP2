@@ -157,12 +157,13 @@ function DrawerAppBar(props) {
         {navItems.map((item) => {
           const resolvePath = item === "Home" ? "/" : `/${item.toLowerCase()}`;
           const isActive = location.pathname === resolvePath;
+          const movieCategory = item === 'Category' ? '/category' : ''
 
           return (
             <ListItem key={item} disablePadding>
               <Link to={item === 'Category' ? location.pathname : resolvePath} style={{ textDecoration: "none" }}>
                 <ListItemButton
-                  className={isActive ? "drawerActive" : ""}
+                  className={isActive ? "drawerActive" : movieCategory && location.pathname !== '/' && location.pathname !== '/movies' ? 'drawerActive' : '' }
                   sx={{
                     textAlign: "center",
                     border: "1px solid #E2C044",
@@ -308,6 +309,7 @@ function DrawerAppBar(props) {
                 item === "Home" ? "/" : `/${item.toLowerCase()}`;
               const isActive = currPath === resolvePath;
               const movieCategory = item === "Category" ? "/category" : "";
+              
 
               return (
                 <Link
@@ -321,7 +323,7 @@ function DrawerAppBar(props) {
                         ? "topActive"
                         : resolvePath === movieCategory && isMenuOpen
                         ? "topActive"
-                        : ""
+                        : movieCategory && currPath !== '/' && currPath !== '/movies' ? 'topActive' : ''
                     }
                     onClick={
                       resolvePath === movieCategory

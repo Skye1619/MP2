@@ -12,10 +12,13 @@ import Horror from "./components/movieCategory/Horror";
 import Romance from "./components/movieCategory/Romance";
 import SciFi from "./components/movieCategory/SciFi";
 import Thriller from "./components/movieCategory/Thriller";
+import CssBaseline from '@mui/material/CssBaseline';
+import React from "react";
 
 function App() {
   return (
-    <>
+    <React.Fragment>
+      <CssBaseline />
       <Container
         maxWidth="false"
         className="main-container"
@@ -37,7 +40,7 @@ function App() {
           </Routes>
         </div>
       </Container>
-    </>
+      </React.Fragment>
   );
 }
 
