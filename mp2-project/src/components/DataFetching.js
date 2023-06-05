@@ -543,17 +543,18 @@ export function FetchTopRated() {
   return passMovieData();
 }
 
-export function SearchMovies({ searchText }) {
+export function SearchMovies( searchKeyword ) {
+
   const [movies, setMovies] = useState([]);
   const fetchMovie = async () => {
     const {
       data: { results },
-    } = await axios.get(`${API_URL}/discover/movie`, {
+    } = await axios.get(`${API_URL}/search/movie`, {
       params: {
         api_key: myKey,
-        language: "en-US",
+        language: 'en-US',
         page: 1,
-        query: searchText,
+        query: searchKeyword
       },
     });
     setMovies(results);
@@ -561,7 +562,27 @@ export function SearchMovies({ searchText }) {
 
   useEffect(() => {
     fetchMovie();
-  }, [searchText]);
+  }, [searchKeyword]);
 
-  return searchText;
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+
+  return passMovieData();
 }

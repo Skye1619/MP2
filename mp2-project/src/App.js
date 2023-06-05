@@ -14,6 +14,7 @@ import SciFi from "./components/movieCategory/SciFi";
 import Thriller from "./components/movieCategory/Thriller";
 import CssBaseline from '@mui/material/CssBaseline';
 import React from "react";
+import SearchMovie from "./components/Search";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/romance" element={<Romance />} />
             <Route path="/sciFi" element={<SciFi />} />
             <Route path="/thriller" element={<Thriller />} />
+            <Route path="/search/:id" element={<SearchMovie />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -163,7 +163,7 @@ function DrawerAppBar(props) {
             <ListItem key={item} disablePadding>
               <Link to={item === 'Category' ? location.pathname : resolvePath} style={{ textDecoration: "none" }}>
                 <ListItemButton
-                  className={isActive ? "drawerActive" : movieCategory && location.pathname !== '/' && location.pathname !== '/movies' ? 'drawerActive' : '' }
+                  className={isActive ? "drawerActive" : movieCategory && location.pathname !== '/' && location.pathname !== '/movies' ? 'drawerActive' : 'drawerButtons' }
                   sx={{
                     textAlign: "center",
                     border: "1px solid #E2C044",
@@ -265,9 +265,7 @@ function DrawerAppBar(props) {
     setSearchValue(event.target.value);
   };
   const handleSearchSubmit = () => {
-    // Handle search submission
-    // console.log("Search value:", searchValue);
-    const testing = SearchMovie(searchValue);
+    navigate(`/search/${searchValue}`)
   };
 
   const container =
@@ -320,10 +318,10 @@ function DrawerAppBar(props) {
                     sx={{ color: "#fff" }}
                     className={
                       isActive && !isMenuOpen
-                        ? "topActive"
+                        ? "topActive topButtons"
                         : resolvePath === movieCategory && isMenuOpen
-                        ? "topActive"
-                        : movieCategory && currPath !== '/' && currPath !== '/movies' ? 'topActive' : ''
+                        ? "topActive topButtons"
+                        : movieCategory && currPath !== '/' && currPath !== '/movies' ? 'topActive topButtons' : 'topButtons'
                     }
                     onClick={
                       resolvePath === movieCategory
@@ -355,7 +353,6 @@ function DrawerAppBar(props) {
               </SearchIconWrapper>
               <StyledInputBase
                 placeholder="Search…"
-                value={searchValue}
                 onChange={handleSearchChange}
                 inputProps={{ "aria-label": "search" }}
                 onKeyDown={(event) => {
