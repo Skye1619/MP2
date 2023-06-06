@@ -574,7 +574,7 @@ export function SearchMovies( searchKeyword ) {
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
       const releaseDate = movie.release_date;
 
-      return {
+      return movie.backdrop_path === null || movie.poster_path === null ? null : {
         movieTitle,
         movieOverview,
         backgroundImg,
@@ -583,6 +583,9 @@ export function SearchMovies( searchKeyword ) {
       };
     });
   };
+  let results = passMovieData();
+  const arr = results === [] ? null : results.filter((value) => value !== null)
+  let obj = {search : results === [] ? [] : arr, selectedData: arr[0] === undefined ? {} : arr[0]}
 
-  return passMovieData();
+  return obj;
 }

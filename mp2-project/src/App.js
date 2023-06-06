@@ -23,7 +23,7 @@ function App() {
       <Container
         maxWidth="false"
         className="main-container"
-        sx={{ height: `100vh` }}
+
       >
         <DrawerAppBar />
         <div>
