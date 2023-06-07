@@ -40,7 +40,7 @@ function SearchMovie() {
     const overview = document.querySelector('#heroOverview');
 
     title.innerText = selectedData.movieTitle
-    releaseDate.innerText = selectedData.releaseDate
+    releaseDate.innerText = `Release Date: ${selectedData.releaseDate}`
     overview.innerText = selectedData.movieOverview
     container.current.style.background = `linear-gradient(90deg, #000d 20%, #0003), url(${selectedData.backgroundImg})`
     poster.current.src = selectedData.posterImg
@@ -48,6 +48,9 @@ function SearchMovie() {
   }
 
   const readSearch = () => {
+    if (container.current !== null) {
+      container.current.style.backgroundImage = `url(${selectedData.backgroundImg})`
+    }
     return search.map((movie, index) => {
       // MOVIE DETAILS
       const movieTitle = movie.movieTitle;
@@ -59,7 +62,7 @@ function SearchMovie() {
       // EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
       // SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA
       return (
-        <Box onClick={() => movieClick(index)} sx={posterImg === 'https://image.tmdb.org/t/p/w500/null' ? {display: 'none'} : { width: '100%', textAlign: 'center' }} key={`movie_${index}`}>
+        <Box id='cardContainer' onClick={() => movieClick(index)} sx={posterImg === 'https://image.tmdb.org/t/p/w500/null' ? {display: 'none'} : { width: '100%', textAlign: 'center', '&:hover': {cursor: 'pointer', color: '#e2c044'} }} key={`movie_${index}`}>
           <img key={`movie_${index}`} className='posterImg' src={posterImg === 'https://image.tmdb.org/t/p/w500/null' ? noImgPlaceholder : posterImg } alt={movieTitle} />
           <Typography variant='body1' component='p'>{movieTitle}</Typography>
         </Box>
@@ -69,16 +72,22 @@ function SearchMovie() {
 
   return (
     <div key='searchKey' id="mainSearchContainer" ref={mainSearchContainerRef} >
-      <Box className='heroContainer' ref={container} sx={{background: `linear-gradient(90deg, #000d 20%, #0003), url(${selectedData === '' ? '' : selectedData.backgroundImg})`}}>
+      <Box className='heroContainer' ref={container} sx={{backgroundImage: `url(${selectedData === '' ? '' : selectedData.backgroundImg})`}}>
         <Box className='heroChild left'>
           <img className='heroPoster' ref={poster} src={selectedData === '' ? '' : selectedData.posterImg} />
         </Box>
         <Box className='heroChild right'>
-          <h1 id='heroTitle'>{selectedData === '' ? '' : selectedData.movieTitle}</h1>
-          <p id='heroReleaseDate'>{selectedData === '' ? '' : `Release Date: ${selectedData.releaseDate}`}</p>
-          <Button sx={{fontWeight: 'bold', width: 'fit-content', color: '#fff', borderColor: '#fff', '&:hover': {background: '#000', borderColor: '#e2c044', color: '#e2c044'}}} variant='outlined' startIcon={<PlayArrowIcon />}>Play Trailer</Button>
-          <Typography id='heroOverview' variant='body1' component={'p'} mt={3}>{selectedData === '' ? '' : selectedData.movieOverview}</Typography>
+            <h1 id='heroTitle'>{selectedData === '' ? '' : selectedData.movieTitle}</h1>
+          <Box id='rDandButton'>
+            <Button id='trailerButton' sx={{fontWeight: 'bold', width: 'fit-content', color: '#fff', borderColor: '#fff', '&:hover': {background: '#000', borderColor: '#e2c044', color: '#e2c044'}}} variant='outlined' startIcon={<PlayArrowIcon />}>Play Trailer</Button>
+            <p id='heroReleaseDate'>{selectedData === '' ? '' : `Release Date: ${selectedData.releaseDate}`}</p>
+          </Box>
+          <h2>Overview:</h2>
+          <Typography id='heroOverview' variant='body1' component={'p'}>{selectedData === '' ? '' : selectedData.movieOverview}</Typography>
         </Box>
+      </Box>
+      <Box id='searchResultName'>
+        <h3>Search Results:</h3>
       </Box>
       <Box className='cardMainContainer'>
         {readSearch()}

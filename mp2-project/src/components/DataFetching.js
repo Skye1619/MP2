@@ -557,6 +557,7 @@ export function SearchMovies( searchKeyword ) {
         query: searchKeyword
       },
     });
+    console.log(results)
     setMovies(results);
   };
 
