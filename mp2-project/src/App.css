@@ -18,3 +18,7 @@
   background: #111 !important;
   overflow: hidden;
 }
+
+.TrendMovie{
+  box-sizing: border-box;
+}

@@ -1,5 +1,9 @@
 import React from "react";
 import FetchTrending, {FetchTopRated, FetchUpcoming, FetchPopular} from "./DataFetching";
+import MovieCard from "./movieCard/MovieCard";
+import { Grid } from "@mui/material";
+import { padding } from "@mui/system";
+
 
 function Movies() {
   const trending = FetchTrending(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
@@ -9,7 +13,7 @@ function Movies() {
 
   /* CREATE AN ARROW FUNCTION TO MAP THE MOVIE DETAILS AND STORE IT IN A VARIABLE */
   const readTrending = () => {
-    return trending.map((movie) => {
+   const Trend =trending.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -21,10 +25,12 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
+            
         </>
       )
     });
+    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Trend}</Grid>
   };
 
   const readTopRated = () => {
@@ -40,7 +46,7 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <div>{}</div>
         </>
       )
     });
@@ -59,7 +65,7 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <div>{}</div>
         </>
       )
     });
@@ -78,13 +84,14 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <div>{}</div>
         </>
       )
     });
   };
 
-  return <div style={{ marginTop: "50px" }}>{readTrending()}</div>
+   return <div style={{ marginTop: "10px" }}>{readTrending()}</div>
+  
 }
 
 export default Movies;
