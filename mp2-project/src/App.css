@@ -19,6 +19,6 @@
   overflow: hidden;
 }
 
-.TrendMovie{
-  box-sizing: border-box;
+.TrendCard{
+  height: 250px !important;
 }

@@ -3,6 +3,8 @@ import FetchTrending, {FetchTopRated, FetchUpcoming, FetchPopular} from "./DataF
 import MovieCard from "./movieCard/MovieCard";
 import { Grid } from "@mui/material";
 import { padding } from "@mui/system";
+import MovieCardTop from "./movieCard/MovieCardTop";
+
 
 
 function Movies() {
@@ -25,16 +27,17 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
+            <div>Trending Movies</div>
             <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
             
         </>
       )
     });
-    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Trend}</Grid>
+    return <Grid container spacing={2} style={{ marginTop: '5px', padding: '5px' }}>{Trend}</Grid>
   };
 
   const readTopRated = () => {
-    return topRated.map((movie) => {
+   const Top =topRated.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -46,14 +49,15 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{}</div>
+            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
         </>
       )
     });
+    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Top}</Grid>
   };
 
   const readUpcomming = () => {
-    return upcomming.map((movie) => {
+    const Up =upcomming.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -65,10 +69,11 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{}</div>
+            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
         </>
       )
     });
+    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Up}</Grid>
   };
 
   const readPopular = () => {
@@ -90,7 +95,10 @@ function Movies() {
     });
   };
 
-   return <div style={{ marginTop: "10px" }}>{readTrending()}</div>
+   return <div style={{ marginTop: "10px" }}>{readTrending()}</div>;
+   return <div style={{ marginTop: "10px" }}>{readTopRated()}</div>;
+   return <div style={{ marginTop: "10px" }}>{readUpcomming()}</div>;
+
   
 }
 

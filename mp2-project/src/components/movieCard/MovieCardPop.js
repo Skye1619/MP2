@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Paper, styled } from '@mui/material';
 
-export default function MovieCard({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
+export default function MovieCardPop({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

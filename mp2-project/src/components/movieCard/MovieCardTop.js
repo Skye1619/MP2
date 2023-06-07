@@ -7,12 +7,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Paper, styled } from '@mui/material';
 
-export default function MovieCard({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
+export default function MovieCardTop({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
-         padding: theme.spacing(2),
+        padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
       }));
@@ -20,19 +20,17 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
     return (
 
     
-      <Grid item xs={2}>
+      <Grid 
+          item xs={3}
+          >
             
-        <Typography variant="h9" sx={{ marginTop: '5px', paddingTop: '5px' }}>
-           {movieTitle}
-        </Typography>
-
         <Card >
            <CardMedia
-             sx={{ height: 150 , padding: '2px'}}
+             sx={{ height: 150 }}
              image={backgroundImg}
              title=""
            />
-         {/* <CardContent className= 'TrendCard' >
+         <CardContent>
            <Typography gutterBottom variant="h6" component="div">
                {movieTitle}
            </Typography>
@@ -43,10 +41,9 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
                {releaseDate}
            </Typography>
         
-         </CardContent> */}
+         </CardContent>
         </Card>
-
-       </Grid>
+      </Grid>
       
     
   );
