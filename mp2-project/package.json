@@ -20,13 +20,6 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "react-slick": "^0.29.0",
-    "react-toastify": "^9.1.3",
-    "slick-carousel": "^1.8.1",
-=======
-    "react-youtube": "^10.1.0",
->>>>>>> 63d272b58c5729f021949272e6b335dd8fed96da
     "source-map-loader": "^4.0.1",
     "styled-components": "^5.3.11",
     "toastify": "^2.0.1",
