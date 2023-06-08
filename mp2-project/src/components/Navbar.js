@@ -157,12 +157,13 @@ function DrawerAppBar(props) {
         {navItems.map((item) => {
           const resolvePath = item === "Home" ? "/" : `/${item.toLowerCase()}`;
           const isActive = location.pathname === resolvePath;
+          const movieCategory = item === 'Category' ? '/category' : ''
 
           return (
             <ListItem key={item} disablePadding>
               <Link to={item === 'Category' ? location.pathname : resolvePath} style={{ textDecoration: "none" }}>
                 <ListItemButton
-                  className={isActive ? "drawerActive" : ""}
+                  className={isActive ? "drawerActive" : movieCategory && location.pathname !== '/' && location.pathname !== '/movies' ? 'drawerActive' : 'drawerButtons' }
                   sx={{
                     textAlign: "center",
                     border: "1px solid #E2C044",
@@ -264,16 +265,14 @@ function DrawerAppBar(props) {
     setSearchValue(event.target.value);
   };
   const handleSearchSubmit = () => {
-    // Handle search submission
-    // console.log("Search value:", searchValue);
-    const testing = SearchMovie(searchValue);
+    navigate(`/search/${searchValue}`)
   };
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box id='navRoot' sx={{ display: "flex", height: '87px' }}>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar
@@ -308,6 +307,7 @@ function DrawerAppBar(props) {
                 item === "Home" ? "/" : `/${item.toLowerCase()}`;
               const isActive = currPath === resolvePath;
               const movieCategory = item === "Category" ? "/category" : "";
+              
 
               return (
                 <Link
@@ -318,10 +318,10 @@ function DrawerAppBar(props) {
                     sx={{ color: "#fff" }}
                     className={
                       isActive && !isMenuOpen
-                        ? "topActive"
+                        ? "topActive topButtons"
                         : resolvePath === movieCategory && isMenuOpen
-                        ? "topActive"
-                        : ""
+                        ? "topActive topButtons"
+                        : movieCategory && currPath !== '/' && currPath !== '/movies' ? 'topActive topButtons' : 'topButtons'
                     }
                     onClick={
                       resolvePath === movieCategory
@@ -353,7 +353,6 @@ function DrawerAppBar(props) {
               </SearchIconWrapper>
               <StyledInputBase
                 placeholder="Search…"
-                value={searchValue}
                 onChange={handleSearchChange}
                 inputProps={{ "aria-label": "search" }}
                 onKeyDown={(event) => {

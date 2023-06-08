@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#searchResultName > h3 {
+    text-align: center;
+    margin: 15px 0;
+}
+#mainSearchContainer {
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 120px;
+}
+
+.posterImg {
+  width: 100%;
+  height: 80%;
+  max-height: 290px;
+  border-radius: 5px;
+}
+.cardMainContainer {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroContainer {
+  width: 100%;
+  max-width: 1350px;
+  height: 80vh;
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+}
+.heroChild {
+  height: 100%;
+  background-color: #00000085;
+}
+.heroChild > h2 {
+    margin-top: 15px !important;
+}
+.left {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+}
+.right {
+  width: 70%;
+  padding-right: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.5;
+}
+.heroPoster {
+  width: 200px !important;
+  height: 300px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1200px) {
+  #mainSearchContainer {
+    overflow-y: hidden !important;
+  }
+
+  .cardMainContainer {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .cardMainContainer {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+  }
+  
+  .heroContainer {
+    background-position: top !important;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    padding-top: 15vh;
+  }
+  .heroChild {
+    padding: 0;
+    margin: 0;
+    background-color: transparent !important;
+  }
+  .heroPoster {
+    width: 100px;
+    height: 180px;
+    box-shadow: 0px -2px 20px -5px rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+  }
+  .right {
+    width: 100%;
+    padding: 0 10px;
+  }
+  #heroTitle {
+    display: block !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) and (min-width: 450px) {
+  .cardMainContainer {
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 700px) {
+  .cardMainContainer {
+    grid-template-columns: repeat(4, 1fr);
+    width: 90%;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import FetchTrending, {FetchTopRated, FetchUpcoming, FetchPopular} from "./DataFetching";
 import MovieCard from "./movieCard/MovieCard";
-import { Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { padding } from "@mui/system";
 import MovieCardTop from "./movieCard/MovieCardTop";
 
@@ -27,13 +27,22 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>Trending Movies</div>
             <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
             
         </>
       )
     });
-    return <Grid container spacing={2} style={{ marginTop: '5px', padding: '5px' }}>{Trend}</Grid>
+    return (
+      <Box>
+        <Typography>Trending Movies</Typography>
+        <Box>
+          {Trend}
+        </Box>
+        
+      </Box>
+    ) 
+
+    
   };
 
   const readTopRated = () => {

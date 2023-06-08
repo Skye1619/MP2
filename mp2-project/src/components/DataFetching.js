@@ -543,25 +543,50 @@ export function FetchTopRated() {
   return passMovieData();
 }
 
-export function SearchMovies({ searchText }) {
+export function SearchMovies( searchKeyword ) {
+
   const [movies, setMovies] = useState([]);
   const fetchMovie = async () => {
     const {
       data: { results },
-    } = await axios.get(`${API_URL}/discover/movie`, {
+    } = await axios.get(`${API_URL}/search/movie`, {
       params: {
         api_key: myKey,
-        language: "en-US",
+        language: 'en-US',
         page: 1,
-        query: searchText,
+        query: searchKeyword
       },
     });
+    console.log(results)
     setMovies(results);
   };
 
   useEffect(() => {
     fetchMovie();
-  }, [searchText]);
+  }, [searchKeyword]);
 
-  return searchText;
+  /* RETURN AN ARRAY OF OBJECT CONTAINING MOVIE DATA */
+  const passMovieData = () => {
+    return movies.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.title;
+      const movieOverview = movie.overview;
+      const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
+      const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
+      const releaseDate = movie.release_date;
+
+      return movie.backdrop_path === null || movie.poster_path === null ? null : {
+        movieTitle,
+        movieOverview,
+        backgroundImg,
+        posterImg,
+        releaseDate,
+      };
+    });
+  };
+  let results = passMovieData();
+  const arr = results === [] ? null : results.filter((value) => value !== null)
+  let obj = {search : results === [] ? [] : arr, selectedData: arr[0] === undefined ? {} : arr[0]}
+
+  return obj;
 }

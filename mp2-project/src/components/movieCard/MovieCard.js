@@ -32,7 +32,7 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
              image={backgroundImg}
              title=""
            />
-         {/* <CardContent className= 'TrendCard' >
+         <CardContent className= 'TrendCard' >
            <Typography gutterBottom variant="h6" component="div">
                {movieTitle}
            </Typography>
@@ -43,7 +43,7 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
                {releaseDate}
            </Typography>
         
-         </CardContent> */}
+         </CardContent>
         </Card>
 
        </Grid>
