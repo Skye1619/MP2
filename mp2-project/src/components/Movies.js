@@ -1,11 +1,14 @@
-import React from "react";
-import FetchTrending, {FetchTopRated, FetchUpcoming, FetchPopular} from "./DataFetching";
+import React, { useEffect, useRef } from "react";
+import "./movieCard/MovieCss.css";
+import FetchTrending, {
+  FetchTopRated,
+  FetchUpcoming,
+  FetchPopular,
+} from "./DataFetching";
 import MovieCard from "./movieCard/MovieCard";
 import { Box, Grid, Typography } from "@mui/material";
 import { padding } from "@mui/system";
 import MovieCardTop from "./movieCard/MovieCardTop";
-
-
 
 function Movies() {
   const trending = FetchTrending(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
@@ -15,7 +18,7 @@ function Movies() {
 
   /* CREATE AN ARROW FUNCTION TO MAP THE MOVIE DETAILS AND STORE IT IN A VARIABLE */
   const readTrending = () => {
-   const Trend =trending.map((movie) => {
+    const Trend = trending.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -25,48 +28,55 @@ function Movies() {
 
       /* EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
-       return (
+      return (
         <>
-            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
-            
+          <MovieCard
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            backgroundImg={backgroundImg}
+            posterImg={posterImg}
+            releaseDate={releaseDate}
+          />
         </>
-      )
+      );
+    });
+  };
+  const readTopRated = () => {
+    const Top = topRated.map((movie) => {
+      /* MOVIE DETAILS */
+      const movieTitle = movie.movieTitle;
+      const movieOverview = movie.movieOverview;
+      const backgroundImg = movie.backgroundImg;
+      const posterImg = movie.posterImg;
+      const releaseDate = movie.releaseDate;
+
+      /* EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
+          SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
+      return (
+        <>
+          <MovieCard
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            backgroundImg={backgroundImg}
+            posterImg={posterImg}
+            releaseDate={releaseDate}
+          />
+        </>
+      );
     });
     return (
-      <Box>
-        <Typography>Trending Movies</Typography>
-        <Box>
-          {Trend}
-        </Box>
-        
-      </Box>
-    ) 
-
-    
-  };
-
-  const readTopRated = () => {
-   const Top =topRated.map((movie) => {
-      /* MOVIE DETAILS */
-      const movieTitle = movie.movieTitle;
-      const movieOverview = movie.movieOverview;
-      const backgroundImg = movie.backgroundImg;
-      const posterImg = movie.posterImg;
-      const releaseDate = movie.releaseDate;
-
-      /* EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
-       SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
-       return (
-        <>
-            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
-        </>
-      )
-    });
-    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Top}</Grid>
+      <Grid
+        container
+        spacing={2}
+        style={{ marginTop: "30px", padding: "15px" }}
+      >
+        {Top}
+      </Grid>
+    );
   };
 
   const readUpcomming = () => {
-    const Up =upcomming.map((movie) => {
+    const Up = upcomming.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -75,14 +85,28 @@ function Movies() {
       const releaseDate = movie.releaseDate;
 
       /* EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
-       SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
-       return (
+          SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
+      return (
         <>
-            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
+          <MovieCard
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            backgroundImg={backgroundImg}
+            posterImg={posterImg}
+            releaseDate={releaseDate}
+          />
         </>
-      )
+      );
     });
-    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Up}</Grid>
+    return (
+      <Grid
+        container
+        spacing={2}
+        style={{ marginTop: "30px", padding: "15px" }}
+      >
+        {Up}
+      </Grid>
+    );
   };
 
   const readPopular = () => {
@@ -95,20 +119,50 @@ function Movies() {
       const releaseDate = movie.releaseDate;
 
       /* EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
-       SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
-       return (
+          SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
+      return (
         <>
-            <div>{}</div>
+          <div>{movieTitle}</div>
         </>
-      )
+      );
     });
   };
 
-   return <div style={{ marginTop: "10px" }}>{readTrending()}</div>;
-   return <div style={{ marginTop: "10px" }}>{readTopRated()}</div>;
-   return <div style={{ marginTop: "10px" }}>{readUpcomming()}</div>;
 
-  
+  const mainContainerRef = useRef(null);
+
+
+  useEffect(() => {
+    const mainContainer = mainContainerRef.current;
+    mainContainer.addEventListener('wheel', handleScroll);
+
+    return () => {
+      mainContainer.removeEventListener('wheel', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = (event) => {
+    event.preventDefault();
+    const scrollAmount = event.deltaY;
+    const newScrollTop = mainContainerRef.current.scrollTop + scrollAmount;
+    mainContainerRef.current.scrollTop = newScrollTop;
+  };
+
+
+
+
+
+
+
+  return (
+    <Box id='movieMainContainer' ref={mainContainerRef}>
+      <Typography>Popular Movies</Typography>
+      <Box>{readPopular()}</Box>
+      <Typography>Upcoming Movies</Typography>
+      <Box>{readUpcomming()}</Box>
+
+    </Box>
+  );
 }
 
 export default Movies;
