@@ -20,3 +20,7 @@
   flex-direction: column;
   
 }
+
+.TrendCard{
+  height: 250px !important;
+}
