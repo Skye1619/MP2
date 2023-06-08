@@ -44,6 +44,7 @@ function SearchMovie() {
     overview.innerText = selectedData.movieOverview
     container.current.style.background = `linear-gradient(90deg, #000d 20%, #0003), url(${selectedData.backgroundImg})`
     poster.current.src = selectedData.posterImg
+    console.log('click')
 
   }
 
