@@ -1,5 +1,11 @@
 import React from "react";
 import FetchTrending, {FetchTopRated, FetchUpcoming, FetchPopular} from "./DataFetching";
+import MovieCard from "./movieCard/MovieCard";
+import { Box, Grid, Typography } from "@mui/material";
+import { padding } from "@mui/system";
+import MovieCardTop from "./movieCard/MovieCardTop";
+
+
 
 function Movies() {
   const trending = FetchTrending(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
@@ -9,7 +15,7 @@ function Movies() {
 
   /* CREATE AN ARROW FUNCTION TO MAP THE MOVIE DETAILS AND STORE IT IN A VARIABLE */
   const readTrending = () => {
-    return trending.map((movie) => {
+   const Trend =trending.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -21,14 +27,26 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
+            
         </>
       )
     });
+    return (
+      <Box>
+        <Typography>Trending Movies</Typography>
+        <Box>
+          {Trend}
+        </Box>
+        
+      </Box>
+    ) 
+
+    
   };
 
   const readTopRated = () => {
-    return topRated.map((movie) => {
+   const Top =topRated.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -40,14 +58,15 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
         </>
       )
     });
+    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Top}</Grid>
   };
 
   const readUpcomming = () => {
-    return upcomming.map((movie) => {
+    const Up =upcomming.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -59,10 +78,11 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <MovieCard movieTitle={movieTitle} movieOverview={movieOverview} backgroundImg={backgroundImg} posterImg={posterImg} releaseDate={releaseDate}/>
         </>
       )
     });
+    return <Grid container spacing={2} style={{ marginTop: '30px', padding: '15px' }}>{Up}</Grid>
   };
 
   const readPopular = () => {
@@ -78,13 +98,17 @@ function Movies() {
        SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
        return (
         <>
-            <div>{movieTitle}</div>
+            <div>{}</div>
         </>
       )
     });
   };
 
-  return <div style={{ marginTop: "50px" }}>{readTrending()}</div>
+   return <div style={{ marginTop: "10px" }}>{readTrending()}</div>;
+   return <div style={{ marginTop: "10px" }}>{readTopRated()}</div>;
+   return <div style={{ marginTop: "10px" }}>{readUpcomming()}</div>;
+
+  
 }
 
 export default Movies;
