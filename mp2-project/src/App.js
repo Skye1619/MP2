@@ -12,14 +12,18 @@ import Horror from "./components/movieCategory/Horror";
 import Romance from "./components/movieCategory/Romance";
 import SciFi from "./components/movieCategory/SciFi";
 import Thriller from "./components/movieCategory/Thriller";
+import CssBaseline from '@mui/material/CssBaseline';
+import React from "react";
+import SearchMovie from "./components/Search";
 
 function App() {
   return (
-    <>
+    <React.Fragment>
+      <CssBaseline />
       <Container
         maxWidth="false"
         className="main-container"
-        sx={{ height: `100vh` }}
+
       >
         <DrawerAppBar />
         <div>
@@ -33,11 +37,12 @@ function App() {
             <Route path="/romance" element={<Romance />} />
             <Route path="/sciFi" element={<SciFi />} />
             <Route path="/thriller" element={<Thriller />} />
+            <Route path="/search/:id" element={<SearchMovie />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Container>
-    </>
+      </React.Fragment>
   );
 }
 
