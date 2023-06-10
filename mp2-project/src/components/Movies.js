@@ -9,6 +9,8 @@ import MovieCard from "./movieCard/MovieCard";
 import { Box, Grid, Typography } from "@mui/material";
 import { padding } from "@mui/system";
 import MovieCardTop from "./movieCard/MovieCardTop";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function Movies() {
   const trending = FetchTrending(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
@@ -76,6 +78,25 @@ function Movies() {
   };
 
   const readUpcomming = () => {
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+      },
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+      }
+    };
     const Up = upcomming.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
@@ -99,13 +120,12 @@ function Movies() {
       );
     });
     return (
-      <Grid
-        container
-        spacing={2}
-        style={{ marginTop: "30px", padding: "15px" }}
-      >
+      <Carousel 
+        responsive={responsive}
+        infinite={true}
+      > 
         {Up}
-      </Grid>
+      </Carousel>
     );
   };
 
@@ -159,7 +179,7 @@ function Movies() {
       <Typography>Popular Movies</Typography>
       <Box>{readPopular()}</Box>
       <Typography>Upcoming Movies</Typography>
-      <Box>{readUpcomming()}</Box>
+      <Box sx={{marginBottom: '200px'}}>{readUpcomming()}</Box>
 
     </Box>
   );
