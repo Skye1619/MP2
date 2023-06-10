@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Paper, styled } from '@mui/material';
+import './MovieCardCss.css'
 
 export default function MovieCard({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
 

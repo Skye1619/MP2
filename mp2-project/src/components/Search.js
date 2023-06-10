@@ -52,18 +52,16 @@ function SearchMovie() {
   }
 
   useEffect(() => {
+    
     if (movieVideo !== null) {
       console.log(movieVideo)
-      const trailer = movieVideo.videos.results.find(vid => vid.name === 'Official Trailer' ? vid.name : movieVideo.videos.results.length !== 0 ? movieVideo.videos.results[0] : null)
+      const trailer = movieVideo.videos.results.find(vid => vid.name === 'Official Trailer' || vid.name === 'Official Teaser' || vid.name === 'Official Teaser Trailer' || vid.type === 'Teaser' || vid.type === 'Trailer' ? vid.name : movieVideo.videos.results[movieVideo.videos.results.length])
       setTrailerKey(trailer.key)
     }
   }, [movieVideo])
 
-
-
-
-
   useEffect(() => {
+    
     const mainSearchContainer = mainSearchContainerRef.current;
     mainSearchContainer.addEventListener('wheel', handleScroll);
 
@@ -98,7 +96,7 @@ function SearchMovie() {
   }
 
   const readSearch = () => {
-    if (container.current !== null) {
+    if (container.current !== null && selectedData.movieId === search[0].movieId) {
       container.current.style.backgroundImage = `url(${selectedData.backgroundImg})`
     }
     movieId = selectedData.movieId
