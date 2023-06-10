@@ -7,6 +7,7 @@ import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SearchNotFound from './SearchNotFound';
 
 function SearchMovie() {
   const { id } = useParams();
@@ -19,12 +20,13 @@ function SearchMovie() {
 
   useEffect(() => {
     const mainSearchContainer = mainSearchContainerRef.current;
+    console.log(mainSearchContainer)
     mainSearchContainer.addEventListener('wheel', handleScroll);
 
     return () => {
       mainSearchContainer.removeEventListener('wheel', handleScroll);
     };
-  }, []);
+  }, [search]);
 
   const handleScroll = (event) => {
     event.preventDefault();
@@ -42,8 +44,11 @@ function SearchMovie() {
     title.innerText = selectedData.movieTitle
     releaseDate.innerText = `Release Date: ${selectedData.releaseDate}`
     overview.innerText = selectedData.movieOverview
-    container.current.style.background = `linear-gradient(90deg, #000d 20%, #0003), url(${selectedData.backgroundImg})`
+    container.current.style.backgroundImage = `url(${selectedData.backgroundImg})`
     poster.current.src = selectedData.posterImg
+    mainSearchContainerRef.current.style.scrollBehavior = 'smooth'
+    mainSearchContainerRef.current.scrollTop = 0;
+    mainSearchContainerRef.current.style.scrollBehavior = 'auto'
 
   }
 
@@ -70,7 +75,7 @@ function SearchMovie() {
     });
   };
 
-  return (
+  return search.length === 0 ? <SearchNotFound refer={mainSearchContainerRef} title={id} /> : (
     <div key='searchKey' id="mainSearchContainer" ref={mainSearchContainerRef} >
       <Box className='heroContainer' ref={container} sx={{backgroundImage: `url(${selectedData === '' ? '' : selectedData.backgroundImg})`}}>
         <Box className='heroChild left'>
