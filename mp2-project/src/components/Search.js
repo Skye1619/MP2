@@ -55,8 +55,18 @@ function SearchMovie() {
     
     if (movieVideo !== null) {
       console.log(movieVideo)
-      const trailer = movieVideo.videos.results.find(vid => vid.name === 'Official Trailer' || vid.name === 'Official Teaser' || vid.name === 'Official Teaser Trailer' || vid.type === 'Teaser' || vid.type === 'Trailer' ? vid.name : movieVideo.videos.results[movieVideo.videos.results.length])
-      setTrailerKey(trailer.key)
+
+      const trailer = movieVideo.videos.results.find((vid) => {
+        if (vid.official && (vid.type === 'Trailer' || vid.type === 'Teaser' || vid.type === 'Teaser Trailer') || (vid.name === 'Official Trailer' && vid.type === 'Trailer') || (vid.name === 'Official Teaser' && vid.type === 'Teaser') || (vid.name === 'Official Teaser Trailer' && vid.type === 'Teaser Trailer')) {
+          console.log('hello')
+          return vid
+        } else {
+          console.log('hi')
+          return ''
+        }
+      })
+      console.log('trailer', trailer)
+      setTrailerKey(trailer === undefined ? '' : trailer.key)
     }
   }, [movieVideo])
 
