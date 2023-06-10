@@ -554,7 +554,7 @@ export function SearchMovies( searchKeyword ) {
         api_key: myKey,
         language: 'en-US',
         page: 1,
-        query: searchKeyword
+        query: searchKeyword,
       },
     });
     setMovies(results);
@@ -569,6 +569,7 @@ export function SearchMovies( searchKeyword ) {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -576,6 +577,7 @@ export function SearchMovies( searchKeyword ) {
 
       return movie.backdrop_path === null || movie.poster_path === null ? null : {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,

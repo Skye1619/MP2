@@ -352,6 +352,7 @@ function DrawerAppBar(props) {
                 <SearchIcon sx={{ color: "#E2C044" }} />
               </SearchIconWrapper>
               <StyledInputBase
+                id='searchInput'
                 placeholder="Search…"
                 onChange={handleSearchChange}
                 inputProps={{ "aria-label": "search" }}
