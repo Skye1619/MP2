@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Paper, styled } from '@mui/material';
+import './MovieCardCss.css'
 
 export default function MovieCard({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
 
@@ -20,27 +21,27 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
     return (
 
     
-      <Grid item xs={3}>
+      <Grid item xs={5}>
             
-        <Typography className='movieTitles' variant="h10" sx={{ marginTop: '5px', paddingTop: '5px' }}>
-           {movieTitle}
+        <Typography variant="h9" sx={{ marginTop: '5px', paddingTop: '5px' }}>
+           {/* {movieTitle} */}
         </Typography>
 
-        <Card className='cardMovie'>
-           <CardMedia
-             sx={{ height: 150 , padding: '2px'}}
+        <Card >
+           <CardMedia 
+             sx={{ height: 250 , padding: '10px' , margin: '10px' }}
              image={backgroundImg}
              title=""
            />
-         <CardContent>
-           {/* <Typography gutterBottom variant="h6" component="div">
+         <CardContent className= 'CardInput' >
+           <Typography gutterBottom variant="h6" component="div">
                {movieTitle}
-           </Typography> */}
-           {/* <Typography variant="body2" color="text.secondary">
+           </Typography>
+           <Typography variant="body2" color="text.secondary">
                {movieOverview}
-           </Typography> */}
-           <Typography variant="p" color="text.secondary" textAlign="center">
-               <p>Release date</p>{releaseDate}
+           </Typography>
+           <Typography variant="p" color="text.secondary">
+               {releaseDate}
            </Typography>
         
          </CardContent>
