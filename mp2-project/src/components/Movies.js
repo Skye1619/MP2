@@ -40,7 +40,18 @@ function Movies() {
         </>
       );
     });
+    return (
+      <Grid
+        container
+        spacing={2}
+        style={{ marginTop: "30px", padding: "15px" }}
+      >
+        {Trend}
+      </Grid>
+    );
   };
+
+
   const readTopRated = () => {
     const Top = topRated.map((movie) => {
       /* MOVIE DETAILS */
@@ -110,7 +121,7 @@ function Movies() {
   };
 
   const readPopular = () => {
-    return popular.map((movie) => {
+    const Pop = popular.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -122,10 +133,25 @@ function Movies() {
           SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
       return (
         <>
-          <div>{movieTitle}</div>
+          <MovieCard
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            backgroundImg={backgroundImg}
+            posterImg={posterImg}
+            releaseDate={releaseDate}
+          />
         </>
       );
     });
+    return (
+      <Grid
+        container
+        spacing={2}
+        style={{ marginTop: "30px", padding: "15px" }}
+      >
+        {Pop}
+      </Grid>
+    );
   };
 
 
@@ -152,14 +178,16 @@ function Movies() {
 
 
 
-
-
   return (
     <Box id='movieMainContainer' ref={mainContainerRef}>
-      <Typography>Popular Movies</Typography>
-      <Box>{readPopular()}</Box>
+      <Typography>Trending Movies</Typography>
+      <Box>{readTrending()}</Box>
+      <Typography>Top Rated Movies</Typography>
+      <Box>{readTopRated()}</Box>
       <Typography>Upcoming Movies</Typography>
       <Box>{readUpcomming()}</Box>
+      <Typography>Popular Movies</Typography>
+      <Box>{readPopular()}</Box>
 
     </Box>
   );
