@@ -9,4 +9,10 @@
     width: 100vw;
     max-width: 1350px;
     height: 100vh;
+    max-height: 1350px;
 }
+
+.movieTitles{
+    align-content: center;
+}
+
