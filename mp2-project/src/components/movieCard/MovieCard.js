@@ -21,19 +21,19 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
     return (
 
     
-      <Grid item xs={2}>
+      <Grid item xs={5}>
             
         <Typography variant="h9" sx={{ marginTop: '5px', paddingTop: '5px' }}>
-           {movieTitle}
+           {/* {movieTitle} */}
         </Typography>
 
         <Card >
-           <CardMedia
-             sx={{ height: 150 , padding: '2px'}}
+           <CardMedia 
+             sx={{ height: 250 , padding: '10px' , margin: '10px' }}
              image={backgroundImg}
              title=""
            />
-         <CardContent className= 'TrendCard' >
+         <CardContent className= 'CardInput' >
            <Typography gutterBottom variant="h6" component="div">
                {movieTitle}
            </Typography>

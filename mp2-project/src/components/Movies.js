@@ -20,6 +20,25 @@ function Movies() {
 
   /* CREATE AN ARROW FUNCTION TO MAP THE MOVIE DETAILS AND STORE IT IN A VARIABLE */
   const readTrending = () => {
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+      },
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+      }
+    };
     const Trend = trending.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
@@ -42,8 +61,37 @@ function Movies() {
         </>
       );
     });
+    return (
+      <Carousel 
+        responsive={responsive}
+        infinite={true}
+        
+      > 
+        {Trend}
+      </Carousel>
+    );
   };
+  
   const readTopRated = () => {
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+      },
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+      }
+    };
     const Top = topRated.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
@@ -67,13 +115,12 @@ function Movies() {
       );
     });
     return (
-      <Grid
-        container
-        spacing={2}
-        style={{ marginTop: "30px", padding: "15px" }}
-      >
+      <Carousel 
+        responsive={responsive}
+        infinite={true}
+      > 
         {Top}
-      </Grid>
+      </Carousel>
     );
   };
 
@@ -130,7 +177,26 @@ function Movies() {
   };
 
   const readPopular = () => {
-    return popular.map((movie) => {
+    const responsive = {
+      superLargeDesktop: {
+        // the naming can be any, depends on you.
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+      },
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+      }
+    };
+    const Pop = popular.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
       const movieOverview = movie.movieOverview;
@@ -142,15 +208,29 @@ function Movies() {
           SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
       return (
         <>
-          <div>{movieTitle}</div>
+          <MovieCard
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            backgroundImg={backgroundImg}
+            posterImg={posterImg}
+            releaseDate={releaseDate}
+          />
         </>
       );
     });
+    return (
+      <Carousel 
+        responsive={responsive}
+        infinite={true}
+      > 
+        {Pop}
+      </Carousel>
+    );
   };
 
 
+  
   const mainContainerRef = useRef(null);
-
 
   useEffect(() => {
     const mainContainer = mainContainerRef.current;
@@ -170,16 +250,16 @@ function Movies() {
 
 
 
-
-
-
-
   return (
     <Box id='movieMainContainer' ref={mainContainerRef}>
-      <Typography>Popular Movies</Typography>
-      <Box>{readPopular()}</Box>
-      <Typography>Upcoming Movies</Typography>
-      <Box sx={{marginBottom: '200px'}}>{readUpcomming()}</Box>
+      <Typography variant= "h4" sx={{marginTop: '20px' , marginLeft: '20px'}}>Trending Movies</Typography>
+      <Box sx={{marginBottom: '50px' , marginTop: '10px'}}>{readTrending()}</Box>
+      <Typography variant= "h4" sx={{marginLeft: '20px'}}>Top Rated Movies</Typography>
+      <Box sx={{marginBottom: '50px', marginTop: '10px'}}>{readTopRated()}</Box>
+      <Typography variant= "h4" sx={{marginLeft: '20px'}}>Upcoming Movies</Typography>
+      <Box sx={{marginBottom: '50px' , marginTop: '10px'}}>{readUpcomming()}</Box>
+      <Typography variant= "h4" sx={{marginTop: '10px' , marginLeft: '20px' }}>Popular Movies</Typography>
+      <Box sx={{marginBottom: '50px', marginTop: '10px'}}>{readPopular()}</Box>
 
     </Box>
   );
