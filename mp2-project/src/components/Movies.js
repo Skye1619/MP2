@@ -7,16 +7,14 @@ import FetchTrending, {
 } from "./DataFetching";
 import MovieCard from "./movieCard/MovieCard";
 import { Box, Grid, Typography } from "@mui/material";
-import { padding } from "@mui/system";
-import MovieCardTop from "./movieCard/MovieCardTop";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 function Movies() {
-  const trending = FetchTrending(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
-  const topRated = FetchTopRated(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
-  const upcomming = FetchUpcoming(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
-  const popular = FetchPopular(); // CALL THE FETCHTRENDING FUNCTION TO GET THE RETURN VALUE(array of object) AND STORE IT IN trending
+  const trending = FetchTrending();
+  const topRated = FetchTopRated();
+  const upcomming = FetchUpcoming();
+  const popular = FetchPopular();
 
   /* CREATE AN ARROW FUNCTION TO MAP THE MOVIE DETAILS AND STORE IT IN A VARIABLE */
   const readTrending = () => {

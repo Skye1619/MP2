@@ -30,6 +30,7 @@ function SearchMovie() {
   const [trailerKey, setTrailerKey] = useState()
   let movieId = ''
 
+  console.log('hello kodego ')
   const fetchMovieVideos = async () => {
     const {data} = await axios.get(`${API_URL}/${movieId}`, {
       params: {
@@ -39,9 +40,10 @@ function SearchMovie() {
     });
     return data
   }
-
+  
   function playTrailer() {
     
+    console.log('play', selectedData)
     handleOpen()
     const movieData = async () => {
       const data = await fetchMovieVideos();
@@ -54,18 +56,16 @@ function SearchMovie() {
   useEffect(() => {
     
     if (movieVideo !== null) {
-      console.log(movieVideo)
 
-      const trailer = movieVideo.videos.results.find((vid) => {
+      let trailer = movieVideo.videos.results.find((vid) => {
         if (vid.official && (vid.type === 'Trailer' || vid.type === 'Teaser' || vid.type === 'Teaser Trailer') || (vid.name === 'Official Trailer' && vid.type === 'Trailer') || (vid.name === 'Official Teaser' && vid.type === 'Teaser') || (vid.name === 'Official Teaser Trailer' && vid.type === 'Teaser Trailer')) {
-          console.log('hello')
           return vid
         } else {
-          console.log('hi')
           return ''
         }
       })
-      console.log('trailer', trailer)
+
+      trailer = trailer !== undefined ? trailer : movieVideo.videos.results.length !== 0 ? movieVideo.videos.results[movieVideo.videos.results.length - 1] : ''
       setTrailerKey(trailer === undefined ? '' : trailer.key)
     }
   }, [movieVideo])
@@ -102,6 +102,8 @@ function SearchMovie() {
     mainSearchContainerRef.current.scrollTop = 0;
     mainSearchContainerRef.current.style.scrollBehavior = 'auto'
     movieId = selectedData.movieId
+    console.log('selectedData', selectedData)
+    console.log('indexValue', indexValue)
 
   }
 
@@ -139,7 +141,7 @@ function SearchMovie() {
         <Box className='heroChild right'>
             <h1 id='heroTitle'>{selectedData === '' ? '' : selectedData.movieTitle}</h1>
           <Box id='rDandButton'>
-            <Button id='trailerButton' onClick={playTrailer} sx={{fontWeight: 'bold', width: 'fit-content', color: '#fff', borderColor: '#fff', '&:hover': {background: '#000', borderColor: '#e2c044', color: '#e2c044'}}} variant='outlined' startIcon={<PlayArrowIcon />}>Play Trailer</Button>
+            <Button id='trailerButton' onClick={() => playTrailer()} sx={{fontWeight: 'bold', width: 'fit-content', color: '#fff', borderColor: '#fff', '&:hover': {background: '#000', borderColor: '#e2c044', color: '#e2c044'}}} variant='outlined' startIcon={<PlayArrowIcon />}>Play Trailer</Button>
             <p id='heroReleaseDate'>{selectedData === '' ? '' : `Release Date: ${selectedData.releaseDate}`}</p>
           </Box>
           <h2>Overview:</h2>
@@ -159,9 +161,9 @@ function SearchMovie() {
         aria-describedby="modal-modal-description"
         sx={{display: 'grid', placeItems: 'center', width: '100%', height: '100%', padding: '0', margin: '0'}}
       >
-        <Box className='modalFuckingBox' sx={{
+        <Box className='modalBox' sx={{
   width: '75%',
-  height: '400px',
+  height: '100%',
   boxShadow: 24,
 }}>
           <YouTube videoId={trailerKey} id='youtubePlayer' className='youtubePlayer' opts={{playerVars: {autoplay: 1}}}/>

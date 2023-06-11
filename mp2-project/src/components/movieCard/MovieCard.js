@@ -27,7 +27,7 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
            {/* {movieTitle} */}
         </Typography>
 
-        <Card >
+        <Card sx={{margin: '0 10px'}} >
            <CardMedia 
              sx={{ height: 250 , padding: '10px' , margin: '10px' }}
              image={backgroundImg}
@@ -37,11 +37,11 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
            <Typography gutterBottom variant="h6" component="div">
                {movieTitle}
            </Typography>
-           <Typography variant="body2" color="text.secondary">
-               {movieOverview}
-           </Typography>
            <Typography variant="p" color="text.secondary">
-               {releaseDate}
+               Release Date: {releaseDate}
+           </Typography>
+           <Typography variant="body2" color="text.secondary" className='overview'>
+               {movieOverview}
            </Typography>
         
          </CardContent>
