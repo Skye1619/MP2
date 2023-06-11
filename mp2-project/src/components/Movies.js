@@ -252,13 +252,13 @@ function Movies() {
   return (
     <Box id='movieMainContainer' ref={mainContainerRef}>
       <Typography variant= "h4" sx={{marginTop: '20px' , marginLeft: '20px'}}>Trending Movies</Typography>
-      <Box sx={{marginBottom: '50px' , marginTop: '10px'}}>{readTrending()}</Box>
+      <Box sx={{marginBottom: '5px' , marginTop: '0px'}}>{readTrending()}</Box>
       <Typography variant= "h4" sx={{marginLeft: '20px'}}>Top Rated Movies</Typography>
-      <Box sx={{marginBottom: '50px', marginTop: '10px'}}>{readTopRated()}</Box>
+      <Box sx={{marginBottom: '5px', marginTop: '0px'}}>{readTopRated()}</Box>
       <Typography variant= "h4" sx={{marginLeft: '20px'}}>Upcoming Movies</Typography>
-      <Box sx={{marginBottom: '50px' , marginTop: '10px'}}>{readUpcomming()}</Box>
-      <Typography variant= "h4" sx={{marginTop: '10px' , marginLeft: '20px' }}>Popular Movies</Typography>
-      <Box sx={{marginBottom: '50px', marginTop: '10px'}}>{readPopular()}</Box>
+      <Box sx={{marginBottom: '5px' , marginTop: '10px'}}>{readUpcomming()}</Box>
+      <Typography variant= "h4" sx={{marginTop: '10px', marginLeft: '20px' }}>Popular Movies</Typography>
+      <Box sx={{marginBottom: '100px', marginTop: '10px'}}>{readPopular()}</Box>
 
     </Box>
   );
