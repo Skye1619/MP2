@@ -2,9 +2,37 @@
     margin: 10px;
     height: fit-content;
     
-        
 }
 
+.card-container{
+    justify-content: space-between;
+    margin: 5px;
+
+}
+
+.truncate-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px; /* Adjust the max-width as needed */
+  }
+
+  .truncate-text--wrapper {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .truncate-text--content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  
 * {
     box-sizing: border-box;
     margin: 0;
