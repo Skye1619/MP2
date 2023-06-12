@@ -7,8 +7,22 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Paper, styled } from '@mui/material';
 import './MovieCardCss.css'
+import axios from 'axios';
 
-export default function MovieCard({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate}) {
+const myKey = "850c76a64839953d0d1631f4e46d66b8";
+const API_URL = 'https://api.themoviedb.org/3/movie'
+
+export default function MovieCard({movieTitle, movieOverview, backgroundImg, posterImg, releaseDate, movieId}) {
+
+  const fetchMovieVideos = async () => {
+    const {data} = await axios.get(`${API_URL}/${movieId}`, {
+      params: {
+        api_key: myKey,
+        append_to_response: 'videos'
+      },
+    });
+    return data
+  }
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,7 +31,6 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
         textAlign: 'center',
         color: theme.palette.text.secondary,
       }));
-
     return (
 
     

@@ -40,6 +40,7 @@ function Movies() {
     const Trend = trending.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
+      const movieId = movie.id;
       const movieOverview = movie.movieOverview;
       const backgroundImg = movie.backgroundImg;
       const posterImg = movie.posterImg;
@@ -51,6 +52,7 @@ function Movies() {
         <>
           <MovieCard
             movieTitle={movieTitle}
+            movieId={movieId}
             movieOverview={movieOverview}
             backgroundImg={backgroundImg}
             posterImg={posterImg}
@@ -93,6 +95,7 @@ function Movies() {
     const Top = topRated.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
+      const movieId = movie.id;
       const movieOverview = movie.movieOverview;
       const backgroundImg = movie.backgroundImg;
       const posterImg = movie.posterImg;
@@ -104,6 +107,7 @@ function Movies() {
         <>
           <MovieCard
             movieTitle={movieTitle}
+            movieId={movieId}
             movieOverview={movieOverview}
             backgroundImg={backgroundImg}
             posterImg={posterImg}
@@ -145,6 +149,7 @@ function Movies() {
     const Up = upcomming.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
+      const movieId = movie.id;
       const movieOverview = movie.movieOverview;
       const backgroundImg = movie.backgroundImg;
       const posterImg = movie.posterImg;
@@ -156,6 +161,7 @@ function Movies() {
         <>
           <MovieCard
             movieTitle={movieTitle}
+            movieId={movieId}
             movieOverview={movieOverview}
             backgroundImg={backgroundImg}
             posterImg={posterImg}
@@ -197,6 +203,7 @@ function Movies() {
     const Pop = popular.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.movieTitle;
+      const movieId = movie.id;
       const movieOverview = movie.movieOverview;
       const backgroundImg = movie.backgroundImg;
       const posterImg = movie.posterImg;
@@ -208,6 +215,7 @@ function Movies() {
         <>
           <MovieCard
             movieTitle={movieTitle}
+            movieId={movieId}
             movieOverview={movieOverview}
             backgroundImg={backgroundImg}
             posterImg={posterImg}

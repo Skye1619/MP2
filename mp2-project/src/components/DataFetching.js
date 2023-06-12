@@ -397,6 +397,7 @@ function FetchTrending() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -404,6 +405,7 @@ function FetchTrending() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -441,6 +443,7 @@ export function FetchPopular() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -448,6 +451,7 @@ export function FetchPopular() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -483,6 +487,7 @@ export function FetchUpcoming() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -490,6 +495,7 @@ export function FetchUpcoming() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -525,6 +531,7 @@ export function FetchTopRated() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -532,6 +539,7 @@ export function FetchTopRated() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
