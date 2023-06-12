@@ -34,8 +34,6 @@ export default function MovieCard({
     return data;
   };
 
-  
-
   const [open, setOpen] = React.useState(false);
   const [trailerKey, setTrailerKey] = React.useState();
   const [movieVideo, setMovieVideos] = React.useState(null);
@@ -54,14 +52,13 @@ export default function MovieCard({
     if (movieVideo !== null) {
       let trailer = movieVideo.videos.results.find((vid) => {
         if (
-          (vid.official &&
-            (vid.type === "Trailer" ||
-              vid.type === "Teaser" ||
-              vid.type === "Teaser Trailer")) ||
-          (vid.name === "Official Trailer" && vid.type === "Trailer") ||
-          (vid.name === "Official Teaser" && vid.type === "Teaser") ||
-          (vid.name === "Official Teaser Trailer" &&
-            vid.type === "Teaser Trailer")
+          vid.official &&
+          (vid.type === "Trailer" ||
+            vid.type === "Teaser" ||
+            vid.type === "Teaser Trailer") &&
+          (vid.name === "Official Trailer" ||
+            vid.name === "Official Teaser" ||
+            vid.name === "Official Teaser Trailer")
         ) {
           console.log('if', vid.key)
           return vid;

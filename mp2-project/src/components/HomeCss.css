@@ -1,0 +1,46 @@
+* {
+    color: #eee !important;
+}
+
+.rightContainer > img {
+    height: 70vh !important;
+    max-width: 52vw;
+    object-fit: cover;
+}
+
+.arrow {
+    border-bottom-color: #fff;
+    padding: 0;
+}
+
+.allContainer {
+    align-items: start;
+    padding-top: 20px;
+    height: calc(100vh - 90px);
+}
+
+.headingName {
+    font-size: 32px;
+    color: #e2c044 !important;
+    font-weight: bold;
+}
+
+.Descp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10; /* Number of lines to display */
+     overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.SlideBtn {
+    background-color: #fff;
+}
+.slideButton {
+    bottom: 5px;
+}
+
+.CarouselContainer {
+    padding: 0 !important;
+    margin: 0 !important;
+}
