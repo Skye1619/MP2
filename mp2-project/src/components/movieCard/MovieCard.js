@@ -6,12 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box, Grid, Paper, styled } from '@mui/material';
-import './MovieCardCss.css'
 import axios from 'axios';
-import { Grid, Paper, styled } from '@mui/material';
 import './MovieCardCss.css';
 import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 const myKey = "850c76a64839953d0d1631f4e46d66b8";
@@ -94,7 +91,7 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
                   }}
                 >
                   <CardMedia sx={{ height: 550, padding: '10px' }} image={backgroundImg} title="" />
-                  <Typography variant="h5" id="modal-title">
+                  <Typography variant="h6" id="modal-title">
                     {movieTitle}
                   </Typography>
                   <Typography variant="p" color="text.secondary">
@@ -108,6 +105,7 @@ export default function MovieCard({movieTitle, movieOverview, backgroundImg, pos
               </Box>
             </ClickAwayListener>
           </Modal>
+          
           <Typography gutterBottom variant="h6" component="div">
             {movieTitle}
           </Typography>
