@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#movieMainContainer {
+    overflow-y: auto;
+    width: 100vw;
+    max-width: 1350px;
+    height: 100vh;
+    max-height: 1350px;
+    padding-bottom: 100px;
+}
+
+.movieTitles{
+    align-content: center;
+}
+
