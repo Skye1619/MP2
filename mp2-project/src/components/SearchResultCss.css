@@ -47,14 +47,14 @@
 .heroChild > h2 {
     margin-top: 15px !important;
 }
-.left {
+.Left {
   width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 30px;
 }
-.right {
+.Right {
   width: 70%;
   padding-right: 70px;
   display: flex;
@@ -118,7 +118,7 @@
     box-shadow: 0px -2px 20px -5px rgba(255, 255, 255, 0.6);
     border-radius: 5px;
   }
-  .right {
+  .Right {
     width: 100%;
     padding: 0 10px;
   }
@@ -157,7 +157,7 @@
     box-shadow: 0px -2px 20px -5px rgba(255, 255, 255, 0.6);
     border-radius: 5px;
   }
-  .right {
+  .Right {
     width: 100%;
     padding: 0 10px;
   }
@@ -175,7 +175,7 @@
   .modalBox {
     width: 90% !important;
   }
-  .left {
+  .Left {
     padding-left: 0;
   }
 }

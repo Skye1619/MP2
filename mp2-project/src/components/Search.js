@@ -24,28 +24,31 @@ function SearchMovie() {
   let { search, selectedData } = searchObj;
   const [movieVideo, setMovieVideos] = useState(null);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => {
+  const [mId, setMId] = useState('');
+  const [bgMovie, setbgMovie] = useState('')
+
+  const handleOpen = async () => {
     setOpen(true)
     console.log("play", selectedData);
-    const movieData = async () => {
-      const data = await fetchMovieVideos();
-      setMovieVideos(data);
-    };
-    movieData();
+    await fetchMovieVideos(mId);
   }
+  
   const handleClose = () => setOpen(false);
   const [trailerKey, setTrailerKey] = useState();
   let movieId = "";
 
   console.log("hello kodego ");
-  const fetchMovieVideos = async () => {
-    const { data } = await axios.get(`${API_URL}/${movieId}`, {
+
+  const fetchMovieVideos = async (mid) => {
+
+    const id = mid !== undefined && mid !== '' ? mid : selectedData.movieId
+    const { data } = await axios.get(`${API_URL}/${id}`, {
       params: {
         api_key: myKey,
         append_to_response: "videos",
       },
     });
-    return data;
+    setMovieVideos(data);
   };
 
 
@@ -103,23 +106,25 @@ function SearchMovie() {
     title.innerText = selectedData.movieTitle;
     releaseDate.innerText = `Release Date: ${selectedData.releaseDate}`;
     overview.innerText = selectedData.movieOverview;
-    container.current.style.backgroundImage = `url(${selectedData.backgroundImg})`;
+    //container.current.style.backgroundImage = `${selectedData.backgroundImg}`;
+    setbgMovie(`${selectedData.backgroundImg}`)
     poster.current.src = selectedData.posterImg;
     mainSearchContainerRef.current.style.scrollBehavior = "smooth";
     mainSearchContainerRef.current.scrollTop = 0;
     mainSearchContainerRef.current.style.scrollBehavior = "auto";
     movieId = selectedData.movieId;
+    setMId(selectedData.movieId);
     console.log("selectedData", selectedData);
     console.log("indexValue", indexValue);
   }
 
   const readSearch = () => {
-    if (
+    /* if (
       container.current !== null &&
       selectedData.movieId === search[0].movieId
     ) {
-      container.current.style.backgroundImage = `url(${selectedData.backgroundImg})`;
-    }
+      container.current.style.backgroundImage = `url(${bgMovie}`;
+    } */
     movieId = selectedData.movieId;
     return search.map((movie, index) => {
       // MOVIE DETAILS
@@ -174,18 +179,18 @@ function SearchMovie() {
         ref={container}
         sx={{
           backgroundImage: `url(${
-            selectedData === "" ? "" : selectedData.backgroundImg
+            bgMovie === "" ? selectedData.backgroundImg : bgMovie
           })`,
         }}
       >
-        <Box className="heroChild left">
+        <Box className="heroChild Left">
           <img
             className="heroPoster"
             ref={poster}
             src={selectedData === "" ? "" : selectedData.posterImg}
           />
         </Box>
-        <Box className="heroChild right">
+        <Box className="heroChild Right">
           <h1 id="heroTitle">
             {selectedData === "" ? "" : selectedData.movieTitle}
           </h1>
