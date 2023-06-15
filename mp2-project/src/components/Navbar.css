@@ -1,61 +1,62 @@
 * {
-  box-sizing: border-box !important;
-}
-
-img[alt="Logo"]:hover {
-  cursor: pointer;
-}
-
-.topActive {
-  border: 2px 0 solid transparent !important;
-  border-bottom: 2px solid #e2c044 !important;
-  border-radius: 0 !important;
-}
-
-.drawerActive {
-  background: #e2c044 !important;
-}
-
-.dropdownMenu {
-  color: #e2c044 !important;
-  background: #333 !important;
-  padding: 10px 30px !important;
-}
-.dropdownMenu:hover {
-  color: #eee !important;
-}
-.MuiMenu-paper {
-  border-radius: 0 10px 10px 10px !important;
-  border: none !important;
-  background: transparent !important;
-}
-.MuiMenu-list {
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  height: fit-content !important;
-  overflow: hidden !important;
-}
-
-.mobileCategoryButton {
-  background: #333 !important;
-  color: #e2c044 !important;
-  border-radius: 0 !important;
-}
-
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
-  background: transparent !important;
-}
-
-.MuiDialogTitle-root {
-  color: #e2c044 !important;
-  background: #333 !important;
-}
-.drawerButtons:hover,
-.topButtons:hover {
-  color: #e2c044 !important;
-}
-
-.mobileCategoryButton:hover {
-  color: #eee !important;
-}
+    box-sizing: border-box !important;
+  }
+  
+  img[alt="Logo"]:hover {
+    cursor: pointer;
+  }
+  
+  .topActive {
+    border: 2px 0 solid transparent !important;
+    border-bottom: 2px solid #e2c044 !important;
+    border-radius: 0 !important;
+  }
+  
+  .drawerActive {
+    background: #e2c044 !important;
+  }
+  
+  .dropdownMenu {
+    color: #e2c044 !important;
+    background: #333 !important;
+    padding: 10px 30px !important;
+  }
+  .dropdownMenu:hover {
+    color: #eee !important;
+  }
+  .MuiMenu-paper {
+    border-radius: 0 10px 10px 10px !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .MuiMenu-list {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: fit-content !important;
+    overflow: hidden !important;
+  }
+  
+  .mobileCategoryButton {
+    background: #333 !important;
+    color: #e2c044 !important;
+    border-radius: 0 !important;
+  }
+  
+  .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    background: transparent !important;
+  }
+  
+  .MuiDialogTitle-root {
+    color: #e2c044 !important;
+    background: #333 !important;
+  }
+  .drawerButtons:hover,
+  .topButtons:hover {
+    color: #e2c044 !important;
+  }
+  
+  .mobileCategoryButton:hover {
+    color: #eee !important;
+  }
+  
