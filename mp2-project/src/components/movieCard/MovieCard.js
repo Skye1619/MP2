@@ -24,6 +24,8 @@ export default function MovieCard({
   releaseDate,
   movieId,
 }) {
+
+  console.log('movieId', movieId)
   const fetchMovieVideos = async () => {
     const { data } = await axios.get(`${API_URL}/${movieId}`, {
       params: {

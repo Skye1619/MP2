@@ -108,6 +108,7 @@ export function FetchAction() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -115,6 +116,7 @@ export function FetchAction() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -149,6 +151,7 @@ export function FetchAdventure() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -156,6 +159,7 @@ export function FetchAdventure() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -190,6 +194,7 @@ export function FetchComedy() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -197,6 +202,7 @@ export function FetchComedy() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -231,6 +237,7 @@ export function FetchHorror() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -238,6 +245,7 @@ export function FetchHorror() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -272,6 +280,7 @@ export function FetchRomance() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -279,6 +288,7 @@ export function FetchRomance() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -313,6 +323,7 @@ export function FetchSciFi() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -320,6 +331,7 @@ export function FetchSciFi() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
@@ -354,6 +366,7 @@ export function FetchThriller() {
     return movies.map((movie) => {
       /* MOVIE DETAILS */
       const movieTitle = movie.title;
+      const movieId = movie.id;
       const movieOverview = movie.overview;
       const backgroundImg = imgBaseUrl + "/original/" + movie.backdrop_path;
       const posterImg = imgBaseUrl + "/w500/" + movie.poster_path;
@@ -361,6 +374,7 @@ export function FetchThriller() {
 
       return {
         movieTitle,
+        movieId,
         movieOverview,
         backgroundImg,
         posterImg,
