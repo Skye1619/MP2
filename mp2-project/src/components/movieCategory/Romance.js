@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from "react";
 import { FetchRomance } from '../DataFetching'
 
 function Romance() {
