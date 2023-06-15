@@ -1,30 +1,67 @@
 import React, { useEffect, useRef } from "react";
-import { FetchSciFi } from '../DataFetching'
+
+import { FetchSciFi } from "../DataFetching";
+import MovieCard from "../movieCard/MovieCard";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function SciFi() {
-    const SciFiMovie = FetchSciFi()
+  const sciFiMovie = FetchSciFi();
 
-    const readSciFiMovie = () => {
-        return SciFiMovie.map((movie) => {
-            /* MOVIE DETAILS */
+  const readSciFiMovie = () => {
+    const responsive = {
+      superLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5,
+      },
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3,
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2,
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1,
+      },
+    };
+    const movieCards = sciFiMovie.map((movie) => {
       const movieTitle = movie.movieTitle;
+      const movieId = movie.movieId;
       const movieOverview = movie.movieOverview;
       const backgroundImg = movie.backgroundImg;
       const posterImg = movie.posterImg;
       const releaseDate = movie.releaseDate;
 
-      /* EDIT THIS... DITO MAG GAGAWA NG HTML CODE SA RETURN NITO..
-       SAKA TATAWAGIN NAMAN SA RETURN SA PINAKA BABA */
-       return (
-        <>
-            
-            <div>{movieTitle}</div>
-        </>
-      )
+      return (
+        <MovieCard
+          movieTitle={movieTitle}
+          movieId={movieId}
+          movieOverview={movieOverview}
+          backgroundImg={backgroundImg}
+          posterImg={posterImg}
+          releaseDate={releaseDate}
+          key={movieId}
+        />
+      );
     });
+    return (
+      <Carousel responsive={responsive} infinite={true}>
+        {movieCards}
+      </Carousel>
+    );
   };
 
-  return <div style={{ marginTop: "50px" }}><h1>SciFi</h1>{readSciFiMovie()}</div>
+  return (
+    <div style={{ marginTop: "50px" }}>
+      <h1 style={{ marginLeft: "20px" }}>SciFi</h1>
+      {readSciFiMovie()}
+    </div>
+  );
+
+  
 }
 
-export default SciFi
+export default SciFi;
