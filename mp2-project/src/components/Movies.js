@@ -120,6 +120,7 @@ function Movies() {
       <Carousel 
         responsive={responsive}
         infinite={true}
+        className="myCarousel"
       > 
         {Top}
       </Carousel>
@@ -257,7 +258,8 @@ function Movies() {
 
 
   return (
-    <Box id='movieMainContainer' ref={mainContainerRef}>
+    <Box className= 'MoviePage'>
+     <Box id='movieMainContainer' ref={mainContainerRef}>
       <Typography variant= "h4" sx={{marginTop: '20px' , marginLeft: '20px'}}>Trending Movies</Typography>
       <Box sx={{marginBottom: '5px' , marginTop: '0px'}}>{readTrending()}</Box>
       <Typography variant= "h4" sx={{marginLeft: '20px'}}>Top Rated Movies</Typography>
@@ -267,6 +269,7 @@ function Movies() {
       <Typography variant= "h4" sx={{marginTop: '10px', marginLeft: '20px' }}>Popular Movies</Typography>
       <Box sx={{marginBottom: '100px', marginTop: '10px'}}>{readPopular()}</Box>
 
+     </Box>
     </Box>
   );
 }

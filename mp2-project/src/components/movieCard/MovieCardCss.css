@@ -1,6 +1,9 @@
+
+
 .CardInput {
     margin: 10px;
-    height: fit-content;
+    height: 180px;
+    overflow: auto;
     
 }
 
@@ -9,6 +12,14 @@
     margin: 5px;
 
 }
+
+/* .ModalContent{
+    display: "flex";
+    flex-direction: column;
+    align-items: "flex-start";
+    gap: "8px";
+    
+} */
 
 .truncate-text {
     overflow: hidden;
@@ -39,12 +50,18 @@
     padding: 0;
 }
 
+.MoviePage{
+     display: flex !important;
+     justify-content: center !important;
+}
+
 #movieMainContainer {
     overflow-y: auto;
     width: 100vw;
     max-width: 1350px;
     height: 100vh;
     max-height: 1350px;
+    
 }
 
 .movieTitles{
@@ -58,4 +75,5 @@
     white-space: normal;
     overflow: hidden;
 }
+
 
