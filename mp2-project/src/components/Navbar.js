@@ -20,8 +20,6 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, I
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useMatch, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { SearchMovies } from "./DataFetching";
-import SearchMovie from "./Search";
 import { useTheme } from "@mui/material/styles";
 
 const drawerWidth = 240;
