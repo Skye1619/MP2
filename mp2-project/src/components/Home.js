@@ -34,7 +34,8 @@ function Home() {
   console.log(readTrending())
   return (
     <div className="myHomeMainContainer">
-      <Carousel data={readTrending()} isDark={false} />
+      {/* <Carousel data={readTrending()} isDark={false} /> */}
+      {readTrending()}
     </div>
   )
 }
