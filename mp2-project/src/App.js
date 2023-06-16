@@ -28,7 +28,7 @@ function App() {
         <DrawerAppBar />
         <div>
           <Routes>
-            <Route path="/" element={<NotFound />} />
+            <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/action" element={<Action />} />
             <Route path="/adventure" element={<Adventure />} />

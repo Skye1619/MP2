@@ -213,7 +213,6 @@ const Card = React.memo(function (props) {
         style={{
           width: "70%",
           height: "100%",
-          background: "black",
         }}
         draggable={false}
       >

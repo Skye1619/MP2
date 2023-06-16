@@ -27,6 +27,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 10px;
+  background: linear-gradient(90deg, #000, #333);
 }
 .homePlayButton {
   font-weight: "bold";
@@ -72,15 +73,12 @@
 }
 .react-stacked-center-carousel-slide-2 > *,
 .react-stacked-center-carousel-slide--2 > * {
-  opacity: 0.3 !important;
+  opacity: 0.2 !important;
   transition: opacity 300ms ease !important;
 }
 .react-stacked-center-carousel-slide-0 > * {
   opacity: 1 !important;
   transition: opacity 300ms ease !important;
-}
-.react-stacked-center-carousel-slide-0 {
-    border-radius: 5px;
 }
 
 .react-stacked-center-carousel-slide-0,
@@ -93,11 +91,15 @@
   background-color: #000 !important;
 }
 
+.my-slide-component, .react-stacked-center-carousel-slide-0 {
+  border-radius: 5px !important;
+  overflow: hidden;
+}
 
 
 
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .twitch-button {
         display: none !important;
     }
@@ -118,49 +120,3 @@
 
 
 
-
-
-
-
-/* .rightContainer > img {
-    height: 70vh !important;
-    max-width: 52vw;
-    object-fit: cover;
-}
-
-.arrow {
-    border-bottom-color: #fff;
-    padding: 0;
-}
-
-.allContainer {
-    align-items: start;
-    padding-top: 20px;
-    height: calc(100vh - 90px);
-}
-
-.headingName {
-    font-size: 32px;
-    color: #e2c044 !important;
-    font-weight: bold;
-}
-
-.Descp {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10; 
-     overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.SlideBtn {
-    background-color: #fff;
-}
-.slideButton {
-    bottom: 5px;
-}
-
-.CarouselContainer {
-    padding: 0 !important;
-    margin: 0 !important;
-} */

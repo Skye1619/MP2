@@ -250,6 +250,8 @@ function SearchMovie() {
             width: "75%",
             height: "100%",
             boxShadow: 24,
+            border: "1px solid #e2c04433"
+
           }}
         >
           <YouTube
