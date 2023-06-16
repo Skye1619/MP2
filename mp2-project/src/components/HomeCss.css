@@ -79,6 +79,9 @@
   opacity: 1 !important;
   transition: opacity 300ms ease !important;
 }
+.react-stacked-center-carousel-slide-0 {
+    border-radius: 5px;
+}
 
 .react-stacked-center-carousel-slide-0,
 .react-stacked-center-carousel-slide-1,
