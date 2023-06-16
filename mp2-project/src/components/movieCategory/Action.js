@@ -56,7 +56,7 @@ function Action() {
 
   return (
     <div style={{ marginTop: "50px" }}>
-      <h1 style={{ marginLeft: "20px" }}>Action!!</h1>
+      <h1 style={{ marginLeft: "20px" }}>Action</h1>
       {readActionMovie()}
     </div>
   );
