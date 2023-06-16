@@ -55,7 +55,7 @@
 }
 
 .twitch-button:hover {
-    background-color: red !important;
+  background-color: red !important;
 }
 
 .overviewText {
@@ -86,37 +86,18 @@
 .react-stacked-center-carousel-slide--1,
 .react-stacked-center-carousel-slide-2,
 .react-stacked-center-carousel-slide--2,
-.react-stacked-center-carousel-slide-3
-.react-stacked-center-carousel-slide--3 {
+.react-stacked-center-carousel-slide-3 .react-stacked-center-carousel-slide--3 {
   background-color: #000 !important;
 }
 
-.my-slide-component, .react-stacked-center-carousel-slide-0 {
+.my-slide-component,
+.react-stacked-center-carousel-slide-0 {
   border-radius: 5px !important;
   overflow: hidden;
 }
 
-
-
-
 @media (max-width: 700px) {
-    .twitch-button {
-        display: none !important;
-    }
+  .twitch-button {
+    display: none !important;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

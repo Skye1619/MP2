@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import FetchTrending from "./DataFetching";
-import HomeMovieCard from "./HomeCard/HomeMovieCard";
 import "./HomeCss.css";
 import {
   StackedCarousel,
@@ -9,7 +8,7 @@ import {
 import Fab from "@mui/material/Fab";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Button, Modal, backdropClasses } from "@mui/material";
+import { Box, Button, Modal, } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import axios from "axios";
 import YouTube from "react-youtube";

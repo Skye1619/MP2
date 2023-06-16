@@ -16,9 +16,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import logo from "../assets/logo.png";
 import { styled, alpha } from "@mui/material/styles";
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputBase, Menu, MenuItem, useMediaQuery } from "@mui/material";
+import { Dialog, DialogTitle, InputBase, Menu, MenuItem } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link, useMatch, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
@@ -103,32 +103,25 @@ function DrawerAppBar(props) {
     handleClose()
     switch (buttonValue) {
       case "Action":
-        console.log("1");
         navigate('/action')
         break;
       case "Adventure":
         navigate('/adventure')
-        console.log("2");
         break;
       case "Comedy":
         navigate("/comedy");
-        console.log("3");
         break;
       case "Horror":
         navigate("/horror");
-        console.log("4");
         break;
       case "Romance":
         navigate("/romance");
-        console.log("5");
         break;
       case "Sci-Fi":
         navigate("/sciFi");
-        console.log("6");
         break;
       case "Thriller":
         navigate("/thriller");
-        console.log("7");
         break;
       default:
         return null;

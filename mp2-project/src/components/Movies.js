@@ -6,7 +6,7 @@ import FetchTrending, {
   FetchPopular,
 } from "./DataFetching";
 import MovieCard from "./movieCard/MovieCard";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

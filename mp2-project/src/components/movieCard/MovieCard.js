@@ -1,11 +1,10 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Box, Container, Grid, Paper, styled } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import "./MovieCardCss.css";
 import axios from "axios";
 import "./MovieCardCss.css";
@@ -25,7 +24,6 @@ export default function MovieCard({
   movieId,
 }) {
 
-  console.log('movieId', movieId)
   const fetchMovieVideos = async () => {
     const { data } = await axios.get(`${API_URL}/${movieId}`, {
       params: {
@@ -50,7 +48,6 @@ export default function MovieCard({
   };
 
   React.useEffect(() => {
-    console.log('movieVideo', movieVideo);
     if (movieVideo !== null) {
       let trailer = movieVideo.videos.results.find((vid) => {
         if (
@@ -62,10 +59,8 @@ export default function MovieCard({
             vid.name === "Official Teaser" ||
             vid.name === "Official Teaser Trailer")
         ) {
-          console.log('if', vid.key)
           return vid;
         } else {
-          console.log('else', vid.key)
           return "";
         }
       });
@@ -77,12 +72,10 @@ export default function MovieCard({
           ? movieVideo.videos.results[movieVideo.videos.results.length - 1]
           : "";
       setTrailerKey(trailer === undefined ? "" : trailer.key);
-      console.log('trailer', trailer)
     }
   }, [movieVideo]);
 
   React.useEffect(() => {
-    console.log('trailerKey', trailerKey)
   }, [trailerKey])
 
   const handleClose = () => {

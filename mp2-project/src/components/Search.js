@@ -24,24 +24,21 @@ function SearchMovie() {
   let { search, selectedData } = searchObj;
   const [movieVideo, setMovieVideos] = useState(null);
   const [open, setOpen] = useState(false);
-  const [mId, setMId] = useState('');
-  const [bgMovie, setbgMovie] = useState('')
+  const [mId, setMId] = useState("");
+  const [bgMovie, setbgMovie] = useState("");
 
   const handleOpen = async () => {
-    setOpen(true)
-    console.log("play", selectedData);
+    setOpen(true);
     await fetchMovieVideos(mId);
-  }
-  
+  };
+
   const handleClose = () => setOpen(false);
   const [trailerKey, setTrailerKey] = useState();
   let movieId = "";
 
-  console.log("hello kodego ");
 
   const fetchMovieVideos = async (mid) => {
-
-    const id = mid !== undefined && mid !== '' ? mid : selectedData.movieId
+    const id = mid !== undefined && mid !== "" ? mid : selectedData.movieId;
     const { data } = await axios.get(`${API_URL}/${id}`, {
       params: {
         api_key: myKey,
@@ -50,7 +47,6 @@ function SearchMovie() {
     });
     setMovieVideos(data);
   };
-
 
   useEffect(() => {
     if (movieVideo !== null) {
@@ -107,15 +103,13 @@ function SearchMovie() {
     releaseDate.innerText = `Release Date: ${selectedData.releaseDate}`;
     overview.innerText = selectedData.movieOverview;
     //container.current.style.backgroundImage = `${selectedData.backgroundImg}`;
-    setbgMovie(`${selectedData.backgroundImg}`)
+    setbgMovie(`${selectedData.backgroundImg}`);
     poster.current.src = selectedData.posterImg;
     mainSearchContainerRef.current.style.scrollBehavior = "smooth";
     mainSearchContainerRef.current.scrollTop = 0;
     mainSearchContainerRef.current.style.scrollBehavior = "auto";
     movieId = selectedData.movieId;
     setMId(selectedData.movieId);
-    console.log("selectedData", selectedData);
-    console.log("indexValue", indexValue);
   }
 
   const readSearch = () => {
@@ -250,8 +244,7 @@ function SearchMovie() {
             width: "75%",
             height: "100%",
             boxShadow: 24,
-            border: "1px solid #e2c04433"
-
+            border: "1px solid #e2c04433",
           }}
         >
           <YouTube

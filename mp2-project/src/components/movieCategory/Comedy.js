@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 import { FetchComedy } from "../DataFetching";
 import MovieCard from "../movieCard/MovieCard";

@@ -3,8 +3,8 @@
   padding: 0;
 }
 #searchResultName > h3 {
-    text-align: center;
-    margin: 15px 0;
+  text-align: center;
+  margin: 15px 0;
 }
 #mainSearchContainer {
   overflow-y: auto;
@@ -45,7 +45,7 @@
   background-color: #00000085;
 }
 .heroChild > h2 {
-    margin-top: 15px !important;
+  margin-top: 15px !important;
 }
 .Left {
   width: 30%;
@@ -68,22 +68,13 @@
   border-radius: 5px;
 }
 
-#youtubePlayer, .youtubePlayer {
+#youtubePlayer,
+.youtubePlayer {
   width: 100% !important;
   height: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
 }
-
-
-
-
-
-
-
-
-
-
 
 @media (min-width: 900px) {
   #mainSearchContainer {
@@ -100,7 +91,7 @@
     grid-template-columns: repeat(2, 1fr);
     width: 90%;
   }
-  
+
   .heroContainer {
     background-position: top !important;
     flex-direction: column;
