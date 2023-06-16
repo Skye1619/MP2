@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Box, Grid, Paper, styled } from "@mui/material";
+import { Box, Container, Grid, Paper, styled } from "@mui/material";
 import "./MovieCardCss.css";
 import axios from "axios";
 import "./MovieCardCss.css";
@@ -137,7 +137,7 @@ export default function MovieCard({
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: 1000,
+                    width: 710,
                     bgcolor: "background.paper",
                     border: "2px solid #000",
                     boxShadow: 24,
@@ -148,26 +148,38 @@ export default function MovieCard({
                     videoId={trailerKey}
                     opts={{ playerVars: { autoplay: 1 } }}
                   ></YouTube>
+
+                <Container sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                      mt: 2,
+                    }}>
+                   <Typography gutterBottom variant="h6" component="div">
+                      {movieTitle}
+                   </Typography>
+                   <Typography variant="p" color="text.secondary">
+                      <span>Release Date:</span> {""}{releaseDate}
+                   </Typography>
+                   <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      >
+                       {movieOverview}
+                   </Typography>
+                  </Container>
+
                 </Box>
-              </Box>
+                </Box>
+              
             </ClickAwayListener>
           </Modal>
           <Typography gutterBottom variant="h6" component="div">
             {movieTitle}
           </Typography>
-          <Typography variant="p" color="text.secondary">
-            <span>Release Date:</span> {""}
-            {releaseDate}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            className="truncate-text"
-          >
-            <div className="truncate-text--wrapper">
-              <div className="truncate-text--content">{movieOverview}</div>
-            </div>
-          </Typography>
+         
+         
         </CardContent>
       </Card>
     </Grid>
