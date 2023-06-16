@@ -1,8 +1,125 @@
 * {
-    color: #eee !important;
+  color: #eee !important;
 }
 
-.rightContainer > img {
+.myHomeMainContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000055;
+  height: 100vh;
+  padding-bottom: 100px;
+}
+
+.myHomeRootContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.rightSlideInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+}
+.homePlayButton {
+  font-weight: "bold";
+  width: "fit-content";
+  color: "#fff";
+  border-color: "#fff";
+}
+
+.homePlayButton:hover {
+  background: #000 !important;
+  border-color: #e2c044 !important;
+  color: #e2c044 !important;
+}
+
+.Left {
+  order: -1;
+}
+
+.stacked-carousel-responsive-container {
+  width: 88% !important;
+}
+
+.twitch-button {
+  background-color: #e2c044 !important;
+}
+
+.twitch-button:hover {
+    background-color: red !important;
+}
+
+.overviewText {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.react-stacked-center-carousel-slide-1 > *,
+.react-stacked-center-carousel-slide--1 > * {
+  opacity: 0.5 !important;
+  transition: opacity 300ms ease !important;
+}
+.react-stacked-center-carousel-slide-2 > *,
+.react-stacked-center-carousel-slide--2 > * {
+  opacity: 0.3 !important;
+  transition: opacity 300ms ease !important;
+}
+.react-stacked-center-carousel-slide-0 > * {
+  opacity: 1 !important;
+  transition: opacity 300ms ease !important;
+}
+
+.react-stacked-center-carousel-slide-0,
+.react-stacked-center-carousel-slide-1,
+.react-stacked-center-carousel-slide--1,
+.react-stacked-center-carousel-slide-2,
+.react-stacked-center-carousel-slide--2,
+.react-stacked-center-carousel-slide-3
+.react-stacked-center-carousel-slide--3 {
+  background-color: #000 !important;
+}
+
+
+
+
+
+@media (max-width: 900px) {
+    .twitch-button {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .rightContainer > img {
     height: 70vh !important;
     max-width: 52vw;
     object-fit: cover;
@@ -28,7 +145,7 @@
 .Descp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10; /* Number of lines to display */
+    -webkit-line-clamp: 10; 
      overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -43,4 +160,4 @@
 .CarouselContainer {
     padding: 0 !important;
     margin: 0 !important;
-}
+} */
